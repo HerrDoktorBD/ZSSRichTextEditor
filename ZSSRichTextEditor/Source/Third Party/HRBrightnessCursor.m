@@ -30,7 +30,7 @@
 
 @implementation HRBrightnessCursor
 
-- (id)initWithPoint:(CGPoint)point
+- (id) initWithPoint:(CGPoint)point
 {
     CGSize size = CGSizeMake(18.0f, 40.0f);
     CGRect frame = CGRectMake(point.x - size.width/2.0f, point.y - size.height/2.0f, size.width, size.height);

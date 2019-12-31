@@ -8,15 +8,13 @@
 
 #import "ZSSDemoPickerViewController.h"
 
-
-@interface ZSSDemoPickerViewController ()
-@property (nonatomic, strong) UITextField *textField;
+@interface ZSSDemoPickerViewController()
+    @property (nonatomic, strong) UITextField *textField;
 @end
 
 @implementation ZSSDemoPickerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -24,13 +22,14 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
     self.title = @"Picker";
+
     self.view.backgroundColor = [UIColor whiteColor];
+
     UIBarButtonItem *save = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveURL)];
     self.navigationItem.rightBarButtonItem = save;
     
@@ -42,24 +41,22 @@
     self.textField.layer.borderWidth = 0.5f;
     self.textField.clearButtonMode = UITextFieldViewModeAlways;
     [self.view addSubview:self.textField];
-    
 }
 
-- (void)cancel {
+- (void) cancel {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)saveURL {
+- (void) saveURL {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
     ZSSDemoViewController *vc = self.demoView;
     if (!self.isInsertImagePicker) {
-        [vc showInsertLinkDialogWithLink:self.textField.text title:nil];
+        [vc showInsertLinkDialogWithLink: self.textField.text title: nil];
     } else {
-        [vc showInsertImageDialogWithLink:self.textField.text alt:nil];
+        [vc showInsertImageDialogWithLink: self.textField.text alt: nil];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning

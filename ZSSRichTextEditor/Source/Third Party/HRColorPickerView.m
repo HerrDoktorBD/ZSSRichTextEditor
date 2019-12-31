@@ -178,7 +178,6 @@
     return self;
 }
 
-
 - (HRRGBColor)RGBColor{
     HRRGBColor rgbColor;
     RGBColorFromHSVColor(&_currentHsvColor, &rgbColor);

@@ -34,11 +34,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CYRTextStorage : NSTextStorage
+@interface CYRTextStorage: NSTextStorage
 
-@property (nonatomic, strong) NSArray *tokens;
-@property (nonatomic, strong) UIFont *defaultFont;
+    @property (nonatomic, strong) NSArray* tokens;
+    @property (nonatomic, strong) UIFont *defaultFont;
+    @property (nonatomic, strong) UIColor *defaultTextColor;
 
-- (void)update;
+    - (void)update;
 
 @end

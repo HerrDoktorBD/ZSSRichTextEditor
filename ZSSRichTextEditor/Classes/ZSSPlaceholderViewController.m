@@ -8,12 +8,7 @@
 
 #import "ZSSPlaceholderViewController.h"
 
-@interface ZSSPlaceholderViewController ()
-
-@end
-
 @implementation ZSSPlaceholderViewController
-
 
 - (void)viewDidLoad
 {
@@ -22,7 +17,6 @@
     self.title = @"Placeholder";
     
     self.placeholder = @"Please tap to start editing";
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,7 +24,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

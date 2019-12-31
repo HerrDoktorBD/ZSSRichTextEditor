@@ -40,14 +40,13 @@
     return 4.0f;
 }
 
-+ (float) shadowSize
-{
++ (float) shadowSize {
+
     return 2.0f;
 }
 
+- (id)initWithPoint:(CGPoint)point {
 
-- (id)initWithPoint:(CGPoint)point
-{
     CGSize size = [HRColorCursor cursorSize];
     CGRect frame = CGRectMake(point.x, point.y, size.width, size.height);
     self = [super initWithFrame:frame];
@@ -84,6 +83,5 @@
     [[UIColor colorWithRed:_currentColor.r green:_currentColor.g blue:_currentColor.b alpha:1.0f] set];
     CGContextFillRect(context, CGRectMake(outlineSize + shadowSize, outlineSize + shadowSize, cursorSize.width - (outlineSize + shadowSize)*2.0f, cursorSize.height - (outlineSize + shadowSize)*2.0f));
 }
-
 
 @end

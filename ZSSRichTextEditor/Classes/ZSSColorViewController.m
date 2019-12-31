@@ -8,19 +8,13 @@
 
 #import "ZSSColorViewController.h"
 
-@interface ZSSColorViewController ()
-
-@end
-
 @implementation ZSSColorViewController
 
-
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Colors";
-    
+
     // HTML Content to set in the editor
     NSString *html = @"<p>This editor is using <strong>custom toolbar colors</strong>.</p>";
     
@@ -29,20 +23,17 @@
     
     // Set the toolbar item color
     self.toolbarItemTintColor = [UIColor redColor];
-    
+
     // Set the toolbar selected color
     self.toolbarItemSelectedTintColor = [UIColor blackColor];
-    
+
     // Set the HTML contents of the editor
     [self setHTML:html];
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

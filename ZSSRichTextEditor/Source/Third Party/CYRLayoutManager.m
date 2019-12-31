@@ -37,13 +37,13 @@
 
 static CGFloat kMinimumGutterWidth = 30.f;
 
-@interface CYRLayoutManager ()
+@interface CYRLayoutManager()
 
-@property (nonatomic, assign) CGFloat gutterWidth;
-@property (nonatomic, assign) UIEdgeInsets lineAreaInset;
+    @property (nonatomic, assign) CGFloat gutterWidth;
+    @property (nonatomic, assign) UIEdgeInsets lineAreaInset;
 
-@property (nonatomic) NSUInteger lastParaLocation;
-@property (nonatomic) NSUInteger lastParaNumber;
+    @property (nonatomic) NSUInteger lastParaLocation;
+    @property (nonatomic) NSUInteger lastParaNumber;
 
 @end
 
@@ -51,7 +51,7 @@ static CGFloat kMinimumGutterWidth = 30.f;
 
 #pragma mark - Initialization & Setup
 
-- (instancetype)init
+- (instancetype) init
 {
     self = [super init];
     
@@ -63,7 +63,7 @@ static CGFloat kMinimumGutterWidth = 30.f;
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
@@ -75,16 +75,16 @@ static CGFloat kMinimumGutterWidth = 30.f;
     return self;
 }
 
-- (void)_commonSetup
-{
+- (void) _commonSetup {
+
     self.gutterWidth = kMinimumGutterWidth;
     self.selectedRange = NSMakeRange(0, 0);
-    
-    self.lineAreaInset = UIEdgeInsetsMake(0, 10, 0, 4);
-    self.lineNumberColor = [UIColor grayColor];
-    self.lineNumberFont = [UIFont systemFontOfSize:10.0f];
-}
 
+    self.lineAreaInset = UIEdgeInsetsMake(0, 10, 0, 4);
+
+    self.lineNumberColor = [UIColor labelColor];
+    self.lineNumberFont = [UIFont systemFontOfSize: 10.0f];
+}
 
 #pragma mark - Convenience
 
@@ -164,7 +164,6 @@ static CGFloat kMinimumGutterWidth = 30.f;
     }
 }
 
-
 #pragma mark - Layouting
 
 - (void)processEditingForTextStorage:(NSTextStorage *)textStorage edited:(NSTextStorageEditActions)editMask range:(NSRange)newCharRange changeInLength:(NSInteger)delta invalidatedRange:(NSRange)invalidatedCharRange
@@ -180,7 +179,6 @@ static CGFloat kMinimumGutterWidth = 30.f;
         self.lastParaNumber = 0;
     }
 }
-
 
 #pragma mark - Drawing
 
@@ -204,7 +202,7 @@ static CGFloat kMinimumGutterWidth = 30.f;
                                            CGContextRef context = UIGraphicsGetCurrentContext();
                                            CGRect cursorRect = CGRectMake(0, usedRect.origin.y + 8, self->_gutterWidth, usedRect.size.height);
                                            
-                                           CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:0.9 alpha:1].CGColor);
+                                           CGContextSetFillColorWithColor(context, [UIColor systemBackgroundColor].CGColor);
                                            CGContextFillRect(context, cursorRect);
                                        }
                                        

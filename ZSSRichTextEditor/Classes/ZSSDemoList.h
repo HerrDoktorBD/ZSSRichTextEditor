@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZSSDemoList : UITableViewController
+@interface ZSSDemoList: UITableViewController
 
 @end

@@ -35,10 +35,10 @@
 #import "CYRTextStorage.h"
 #import "CYRToken.h"
 
-@interface CYRTextStorage ()
+@interface CYRTextStorage()
 
-@property (nonatomic, strong) NSMutableAttributedString *attributedString;
-@property (nonatomic, strong) NSMutableDictionary *regularExpressionCache;
+    @property (nonatomic, strong) NSMutableAttributedString *attributedString;
+    @property (nonatomic, strong) NSMutableDictionary *regularExpressionCache;
 
 @end
 
@@ -46,11 +46,12 @@
 
 #pragma mark - Initialization & Setup
 
-- (id)init
-{
-    if (self = [super init])
-    {
+- (id) init {
+
+    if (self = [super init]) {
+
         _defaultFont = [UIFont systemFontOfSize:12.0f];
+        _defaultTextColor = [UIColor labelColor];
         _attributedString = [NSMutableAttributedString new];
         
         _tokens = @[];
@@ -60,11 +61,10 @@
     return self;
 }
 
-
 #pragma mark - Overrides
 
-- (void)setTokens:(NSMutableArray *)tokens
-{
+- (void) setTokens: (NSMutableArray*) tokens {
+
     _tokens = tokens;
     
     // Clear the regular expression cache
@@ -117,27 +117,31 @@
     [self applyStylesToRange:extendedRange];
 }
 
+- (void) update {
 
--(void)update
-{    
-    [self addAttributes:@{NSFontAttributeName : self.defaultFont} range:NSMakeRange(0, self.length)];
-    
-    [self applyStylesToRange:NSMakeRange(0, self.length)];
+    NSRange range = NSMakeRange(0, self.length);
+
+    [self addAttributes: @{ NSFontAttributeName : self.defaultFont,
+                            NSForegroundColorAttributeName : self.defaultTextColor
+    } range: range];
+
+    [self applyStylesToRange: range];
 }
 
-- (void)applyStylesToRange:(NSRange)searchRange
-{
-    if (self.editedRange.location == NSNotFound)
-    {
+- (void) applyStylesToRange: (NSRange) searchRange {
+
+    if (self.editedRange.location == NSNotFound) {
         return;
     }
     
     NSRange paragaphRange = [self.string paragraphRangeForRange: self.editedRange];
     
     // Reset the text attributes
-    [self setAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]} range:paragaphRange];
+    [self setAttributes: @{NSForegroundColorAttributeName : [UIColor labelColor]}
+                  range: paragaphRange];
     
-    [self setAttributes:@{NSFontAttributeName : self.defaultFont} range:paragaphRange];
+    [self setAttributes: @{NSFontAttributeName : self.defaultFont}
+                  range: paragaphRange];
     
     for (CYRToken *attribute in self.tokens)
     {
@@ -146,7 +150,9 @@
                              usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                                  
                                  [attribute.attributes enumerateKeysAndObjectsUsingBlock:^(NSString *attributeName, id attributeValue, BOOL *stop) {
-                                     [self addAttribute:attributeName value:attributeValue range:result.range];
+                                     [self addAttribute:attributeName
+                                                  value:attributeValue
+                                                  range:result.range];
                                  }];
                              }];
     }
@@ -171,7 +177,8 @@
         expression = [NSRegularExpression regularExpressionWithPattern:attribute.expression
                                                                options:NSRegularExpressionCaseInsensitive error:nil];
         
-        [self.regularExpressionCache setObject:expression forKey:definition];
+        [self.regularExpressionCache setObject:expression
+                                        forKey:definition];
     }
     
     return expression;

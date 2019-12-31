@@ -11,7 +11,6 @@
 @interface ZSSFontsViewController () <UITableViewDelegate,UITableViewDataSource> {
     
     ZSSFontFamily selectedFontFamily;
-    
 }
 
 @end
@@ -32,7 +31,6 @@
         _font = fontFamily;
     }
     return self;
-    
 }
 
 #pragma mark - View Did Load Section
@@ -45,7 +43,6 @@
     
     //Create table view
     [self createTableView];
-    
 }
 
 #pragma mark - Set Up View Section
@@ -61,7 +58,6 @@
     
     buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save:)];
     self.navigationItem.rightBarButtonItem = buttonItem;
-    
 }
 
 - (void)createTableView {
@@ -73,19 +69,13 @@
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.view addSubview:tableView];
-    
 }
 
 #pragma mark - Table View Section
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return 7;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,16 +129,13 @@
         break;
     }
     
-    
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+
     switch (indexPath.row) {
         case 0:
         selectedFontFamily = ZSSFontFamilyDefault;
@@ -181,7 +168,6 @@
         default:
         break;
     }
-    
 }
 
 #pragma mark - Navigation Item Interactions Section
@@ -194,14 +180,15 @@
     }
     
     [self.navigationController popViewControllerAnimated:YES];
-
 }
 
 - (void)save:(id)sender {
+
     [self save];
 }
 
 - (void)cancel:(id)sender {
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

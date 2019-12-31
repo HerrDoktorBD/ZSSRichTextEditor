@@ -8,29 +8,23 @@
 
 #import "DemoModalViewController.h"
 
-@interface DemoModalViewController ()
-
-@end
-
 @implementation DemoModalViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    //Back Button
+    // Back Button
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 100.0f, 44.0f)];
     [button setTitle:@"Back" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    
 }
 
 - (void)dismiss {
     
     [self dismissViewControllerAnimated:NO completion:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -71,7 +71,6 @@ zss_editor.init = function() {
                  zss_editor.focusEditor();
                  }
                  });
-    
 }//end
 
 zss_editor.updateOffset = function() {
@@ -101,12 +100,10 @@ zss_editor.debug = function(msg) {
     window.location = 'debug://'+msg;
 }
 
-
 zss_editor.setScrollPosition = function() {
     var position = window.pageYOffset;
     window.location = 'scroll://'+position;
 }
-
 
 zss_editor.setPlaceholder = function(placeholder) {
     
@@ -122,9 +119,6 @@ zss_editor.setPlaceholder = function(placeholder) {
             element.empty();
         }
     });
-	
-	
-    
 }
 
 zss_editor.setFooterHeight = function(footerHeight) {
@@ -334,21 +328,20 @@ zss_editor.setFontFamily = function(fontFamily) {
 	document.execCommand("fontName", false, fontFamily);
 	document.execCommand("styleWithCSS", null, false);
 	zss_editor.enabledEditingItems();
-		
 }
 
 zss_editor.setTextColor = function(color) {
-		
+
     zss_editor.restorerange();
     document.execCommand("styleWithCSS", null, true);
     document.execCommand('foreColor', false, color);
     document.execCommand("styleWithCSS", null, false);
     zss_editor.enabledEditingItems();
     // document.execCommand("removeFormat", false, "foreColor"); // Removes just foreColor
-	
 }
 
 zss_editor.setBackgroundColor = function(color) {
+
     zss_editor.restorerange();
     document.execCommand("styleWithCSS", null, true);
     document.execCommand('hiliteColor', false, color);
@@ -424,7 +417,6 @@ zss_editor.updateImageBase64String = function(imageBase64String, alt) {
     
 }//end
 
-
 zss_editor.unlink = function() {
     
     if (zss_editor.currentEditingLink) {
@@ -463,7 +455,6 @@ zss_editor.quickLink = function() {
     
     var html_code = '<a href="' + link_url + '">' + sel + '</a>';
     zss_editor.insertHTML(html_code);
-    
 }
 
 zss_editor.prepareInsert = function() {
@@ -605,6 +596,7 @@ zss_editor.enabledEditingItems = function(e) {
         if (bgColor.length != 0 && bgColor != 'rgba(0, 0, 0, 0)' && bgColor != 'rgb(0, 0, 0)' && bgColor != 'transparent') {
             items.push('backgroundColor');
         }
+
         // Text Color
         var textColor = t.css('color');
         if (textColor.length != 0 && textColor != 'rgba(0, 0, 0, 0)' && textColor != 'rgb(0, 0, 0)' && textColor != 'transparent') {
@@ -661,7 +653,6 @@ zss_editor.enabledEditingItems = function(e) {
             console.log("callback://");
         }
     }
-    
 }
 
 zss_editor.focusEditor = function() {
@@ -693,9 +684,6 @@ zss_editor.setCustomCSS = function(customCSS) {
                     element.empty();
                     }
                     });*/
-    
-    
-    
 }
 
 //end

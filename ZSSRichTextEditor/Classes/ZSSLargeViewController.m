@@ -8,21 +8,13 @@
 
 #import "ZSSLargeViewController.h"
 
-@interface ZSSLargeViewController ()
-
-@end
-
 @implementation ZSSLargeViewController
 
-
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Large";
-    
-    self.alwaysShowToolbar = YES;
-    
+
     // HTML Content to set in the editor
     NSString *html = @"<h1>Large Editor</h1>"
     "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at enim at nibh pulvinar sagittis eu non lacus. Quisque suscipit tempor urna vel pretium. Curabitur id enim auctor, cursus elit ac, porttitor sem. Ut suscipit purus odio, vitae sollicitudin sapien placerat in. Duis adipiscing urna id viverra tincidunt. Duis sit amet adipiscing justo, vitae facilisis ipsum. Vivamus scelerisque justo ut libero dictum, id tempor ipsum tempus. Nam nec dui dapibus, tristique dolor et, sollicitudin enim. Nullam sagittis arcu tortor, mollis porta mi laoreet ac. Proin lobortis bibendum urna, in ultrices dolor hendrerit quis. Morbi felis quam, luctus nec suscipit porttitor, lacinia vitae velit. Nulla ultricies pellentesque porta. <strong>Suspendisse suscipit sagittis metus non rhoncus</strong>.</p>"
@@ -31,18 +23,15 @@
     "<p>Aliquam mattis libero arcu, <strong>a ultrices risus mattis sed</strong>. Vivamus facilisis consectetur ipsum at volutpat. Duis eget lorem sodales, congue libero dapibus, dignissim odio. Vivamus hendrerit ante at metus feugiat fringilla. Quisque imperdiet magna in tristique sagittis. Nulla neque turpis, tempus a leo eget, auctor interdum dui. In porta mi non libero lacinia pulvinar. Nunc a augue eget est malesuada eleifend a et orci. Aenean in tempus purus. Curabitur auctor viverra massa. Proin in justo pretium lacus pretium ullamcorper. Morbi elementum leo nibh, quis sodales nibh scelerisque ut.</p>"
     "<p>Mauris sed consequat augue. <strong>Aliquam accumsan erat lacus</strong>, consequat volutpat augue imperdiet vitae. Sed tempus dui quis faucibus tempor. Aliquam ultricies in turpis et vehicula. Suspendisse potenti. Duis iaculis rhoncus enim sed tempus. Cras non metus sed erat accumsan gravida vitae in lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer vel cursus ligula, a auctor lacus. In rhoncus massa <em>varius sagittis ultrices</em>. Donec aliquam, nisl sit amet hendrerit pretium, lorem quam mollis purus, ac interdum elit mi et neque. Etiam porta rutrum lacinia. Nullam nec vestibulum ligula. Nam nec ipsum odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
     
+    self.shouldShowKeyboard = NO;
+
     // Set the HTML contents of the editor
-    [self setHTML:html];
-    
+    [self setHTML: html];
 }
 
-
-
-- (void)didReceiveMemoryWarning
-{
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

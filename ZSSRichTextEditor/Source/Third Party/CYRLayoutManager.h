@@ -35,14 +35,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CYRLayoutManager : NSLayoutManager
+@interface CYRLayoutManager: NSLayoutManager
 
-@property (nonatomic, strong) UIFont *lineNumberFont;
-@property (nonatomic, strong) UIColor *lineNumberColor;
+    @property (nonatomic, strong) UIFont *lineNumberFont;
+    @property (nonatomic, strong) UIColor *lineNumberColor;
 
-@property (nonatomic, readonly) CGFloat gutterWidth;
-@property (nonatomic, assign) NSRange selectedRange;
+    @property (nonatomic, readonly) CGFloat gutterWidth;
+    @property (nonatomic, assign) NSRange selectedRange;
 
-- (CGRect)paragraphRectForRange:(NSRange)range;
+    - (CGRect)paragraphRectForRange:(NSRange)range;
 
 @end

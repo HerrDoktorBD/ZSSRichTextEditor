@@ -10,7 +10,20 @@
     /* Custom CSS Styling */
     
     /*customcss*/
-    
+    :root {
+    color-scheme: light dark;
+        --h1-color: #333;
+        --header-bg-clr: #FFF1FF;
+        --header-txt-clr: white;
+    }
+    @media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: light dark;
+        --h1-color: #333;
+        --header-bg-clr: #FFF1FF;
+        --header-txt-clr: white;
+        }
+    }
 </style>
 
 <!-- jQuery Source For ZSSRichTextEditor -->

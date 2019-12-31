@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Zed Said Studio. All rights reserved.
 //
 
-#import "ZSSRichTextEditor.h"
+#import "ZSSRichTextEditorVC.h"
 
-@interface ZSSLargeViewController : ZSSRichTextEditor
+@interface ZSSLargeViewController : ZSSRichTextEditorVC
 
 @end
