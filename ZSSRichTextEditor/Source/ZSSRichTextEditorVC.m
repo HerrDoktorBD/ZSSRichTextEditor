@@ -216,16 +216,6 @@ static Class hackishFixClass = Nil;
 
     @property (nonatomic) CGRect safeFrame;
 
-    /*
-     *  Method for getting a version of the html without quotes
-     */
-    - (NSString *)removeQuotesFromHTML:(NSString *)html;
-
-    /*
-     *  Method for getting a tidied version of the html
-     */
-    - (void)tidyHTML:(NSString *)html completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
-
 @end
 
 @implementation ZSSRichTextEditorVC
