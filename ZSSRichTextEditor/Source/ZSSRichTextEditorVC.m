@@ -356,12 +356,15 @@ static CGFloat kDefaultScale = 0.5;
 
     //self.sourceView.font = [UIFont fontWithName:@"Courier" size:13.0];
     self.sourceView.font = [UIFont preferredFontForTextStyle: UIFontTextStyleSubheadline];
-    //self.sourceView.textColor = [UIColor redColor]; // doesn't work
 
-    // backgroundColor works
-    // backgroundColor will be the view's backgroundColor
+    //self.sourceView.textColor = [UIColor redColor]; // doesn't work
+    self.sourceView.textColor = [UIColor labelColor];
+
+    // UITextView dark mode is not supported by Apple as of 2019-12-31
+    self.sourceView.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     self.sourceView.opaque = false;
-    self.sourceView.backgroundColor = [UIColor clearColor];
+    //self.sourceView.backgroundColor = [UIColor clearColor];
+    self.sourceView.backgroundColor = [UIColor whiteColor];
 
     [self.view addSubview: self.sourceView];
 }

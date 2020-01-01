@@ -97,8 +97,7 @@ static const float kCursorVelocity = 1.0f/8.0f;
                                                  name: UITextViewTextDidChangeNotification
                                                object: self];
     // Setup defaults
-    self.font = [UIFont systemFontOfSize:16.0f];
-    self.textColor = [UIColor labelColor];
+    self.font = [UIFont systemFontOfSize: 16.0f];
 
     self.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -182,21 +181,22 @@ static const float kCursorVelocity = 1.0f/8.0f;
 
 #pragma mark - Overrides
 
-- (void)setTokens:(NSMutableArray *)tokens
-{
+- (void) setTokens: (NSMutableArray*) tokens {
+
     [self.syntaxTextStorage setTokens:tokens];
 }
 
-- (NSArray *)tokens
-{
+- (NSArray*) tokens {
+
     CYRTextStorage *syntaxTextStorage = (CYRTextStorage *)self.textStorage;
     
     return syntaxTextStorage.tokens;
 }
 
-- (void)setText:(NSString *)text
-{
-    UITextRange *textRange = [self textRangeFromPosition:self.beginningOfDocument toPosition:self.endOfDocument];
+- (void) setText: (NSString*) text {
+
+    UITextRange* textRange = [self textRangeFromPosition: self.beginningOfDocument
+                                              toPosition: self.endOfDocument];
     [self replaceRange: textRange
               withText: text];
 }
@@ -226,6 +226,7 @@ static const float kCursorVelocity = 1.0f/8.0f;
                                           0.5,
                                           height));
     if (_lineCursorEnabled) {
+
         self.lineNumberLayoutManager.selectedRange = self.selectedRange;
 
         NSRange glyphRange = [self.lineNumberLayoutManager.textStorage.string paragraphRangeForRange:self.selectedRange];
@@ -240,7 +241,7 @@ static const float kCursorVelocity = 1.0f/8.0f;
 #pragma mark - Gestures
 
 // Sourced from: https://github.com/srijs/NLTextView
-- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+- (BOOL) gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
     // Only accept horizontal pans for the code navigation to preserve correct scrolling behaviour.
     if (gestureRecognizer == _singleFingerPanRecognizer || gestureRecognizer == _doubleFingerPanRecognizer)
@@ -257,7 +258,7 @@ static const float kCursorVelocity = 1.0f/8.0f;
 }
 
 // Sourced from: https://github.com/srijs/NLTextView
-- (void)singleFingerPanHappend:(UIPanGestureRecognizer *)sender
+- (void) singleFingerPanHappend:(UIPanGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateBegan)
     {
@@ -270,7 +271,7 @@ static const float kCursorVelocity = 1.0f/8.0f;
 }
 
 // Sourced from: https://github.com/srijs/NLTextView
-- (void)doubleFingerPanHappend:(UIPanGestureRecognizer *)sender
+- (void) doubleFingerPanHappend:(UIPanGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateBegan)
     {

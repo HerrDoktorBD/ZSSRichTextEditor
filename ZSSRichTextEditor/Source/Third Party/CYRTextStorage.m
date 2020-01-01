@@ -50,10 +50,10 @@
 
     if (self = [super init]) {
 
-        _defaultFont = [UIFont systemFontOfSize:12.0f];
+        _defaultFont = [UIFont systemFontOfSize: 12.0f];
         _defaultTextColor = [UIColor labelColor];
         _attributedString = [NSMutableAttributedString new];
-        
+
         _tokens = @[];
         _regularExpressionCache = @{}.mutableCopy;
     }
@@ -69,52 +69,54 @@
     
     // Clear the regular expression cache
     [self.regularExpressionCache removeAllObjects];
-    
+
     // Redraw all text
     [self update];
 }
 
-- (NSString *)string
-{
+- (NSString*) string {
+
     return [_attributedString string];
 }
 
-- (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range
-{
-    return [_attributedString attributesAtIndex:location effectiveRange:range];
+- (NSDictionary*) attributesAtIndex: (NSUInteger) location effectiveRange: (NSRangePointer) range {
+
+    return [_attributedString attributesAtIndex: location effectiveRange: range];
 }
 
-- (void)replaceCharactersInRange:(NSRange)range withString:(NSString*)str
-{
+- (void) replaceCharactersInRange: (NSRange) range withString: (NSString*) str {
+
     [self beginEditing];
     
-    [_attributedString replaceCharactersInRange:range withString:str];
+    [_attributedString replaceCharactersInRange: range
+                                     withString: str];
     
-    [self edited:NSTextStorageEditedCharacters | NSTextStorageEditedAttributes range:range changeInLength:str.length - range.length];
+    [self edited: NSTextStorageEditedCharacters | NSTextStorageEditedAttributes range: range changeInLength: str.length - range.length];
     [self endEditing];
 }
 
-- (void)setAttributes:(NSDictionary*)attrs range:(NSRange)range
-{
+- (void) setAttributes: (NSDictionary*) attrs range: (NSRange) range {
+
     [self beginEditing];
     
-    [_attributedString setAttributes:attrs range:range];
+    [_attributedString setAttributes: attrs
+                               range: range];
     
-    [self edited:NSTextStorageEditedAttributes range:range changeInLength:0];
+    [self edited: NSTextStorageEditedAttributes range: range changeInLength: 0];
     [self endEditing];
 }
 
--(void)processEditing
-{
-    [self performReplacementsForRange:[self editedRange]];
+- (void) processEditing {
+
+    [self performReplacementsForRange: [self editedRange]];
     [super processEditing];
 }
 
-- (void)performReplacementsForRange:(NSRange)changedRange
+- (void) performReplacementsForRange: (NSRange) changedRange
 {
     NSRange extendedRange = NSUnionRange(changedRange, [[_attributedString string] lineRangeForRange:NSMakeRange(NSMaxRange(changedRange), 0)]);
     
-    [self applyStylesToRange:extendedRange];
+    [self applyStylesToRange: extendedRange];
 }
 
 - (void) update {
@@ -130,57 +132,59 @@
 
 - (void) applyStylesToRange: (NSRange) searchRange {
 
-    if (self.editedRange.location == NSNotFound) {
+    if (self.editedRange.location == NSNotFound)
         return;
-    }
-    
-    NSRange paragaphRange = [self.string paragraphRangeForRange: self.editedRange];
+
+    NSRange paragraphRange = [self.string paragraphRangeForRange: self.editedRange];
     
     // Reset the text attributes
     [self setAttributes: @{NSForegroundColorAttributeName : [UIColor labelColor]}
-                  range: paragaphRange];
-    
+                  range: paragraphRange];
+
     [self setAttributes: @{NSFontAttributeName : self.defaultFont}
-                  range: paragaphRange];
-    
-    for (CYRToken *attribute in self.tokens)
-    {
-        NSRegularExpression *regex = [self expressionForDefinition:attribute.name];
-        [regex enumerateMatchesInString:self.string options:0 range:paragaphRange
-                             usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                                 
-                                 [attribute.attributes enumerateKeysAndObjectsUsingBlock:^(NSString *attributeName, id attributeValue, BOOL *stop) {
-                                     [self addAttribute:attributeName
-                                                  value:attributeValue
-                                                  range:result.range];
-                                 }];
-                             }];
+                  range: paragraphRange];
+
+    for (CYRToken* attribute in self.tokens) {
+
+        NSRegularExpression* regex = [self expressionForDefinition: attribute.name];
+        [regex enumerateMatchesInString: self.string
+                                options: 0
+                                  range: paragraphRange
+                             usingBlock: ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+
+        [attribute.attributes enumerateKeysAndObjectsUsingBlock: ^(NSString *attributeName, id attributeValue, BOOL *stop) {
+
+            [self addAttribute: attributeName
+                         value: attributeValue
+                         range: result.range];
+            }];
+        }];
     }
 }
 
-- (NSRegularExpression *)expressionForDefinition:(NSString *)definition
-{
-    __block CYRToken *attribute = nil;
-    
-    [self.tokens enumerateObjectsUsingBlock:^(CYRToken *enumeratedAttribute, NSUInteger idx, BOOL *stop) {
-        if ([enumeratedAttribute.name isEqualToString:definition])
-        {
+- (NSRegularExpression*) expressionForDefinition: (NSString*) definition {
+
+    __block CYRToken* attribute = nil;
+
+    [self.tokens enumerateObjectsUsingBlock: ^(CYRToken* enumeratedAttribute, NSUInteger idx, BOOL *stop) {
+
+        if ([enumeratedAttribute.name isEqualToString:definition]) {
+
             attribute = enumeratedAttribute;
             *stop = YES;
         }
     }];
     
-    NSRegularExpression *expression = self.regularExpressionCache[attribute.expression];
+    NSRegularExpression* expression = self.regularExpressionCache[attribute.expression];
     
-    if (!expression)
-    {
-        expression = [NSRegularExpression regularExpressionWithPattern:attribute.expression
-                                                               options:NSRegularExpressionCaseInsensitive error:nil];
-        
-        [self.regularExpressionCache setObject:expression
-                                        forKey:definition];
+    if (!expression) {
+
+        expression = [NSRegularExpression regularExpressionWithPattern: attribute.expression
+                                                               options: NSRegularExpressionCaseInsensitive error:nil];
+        [self.regularExpressionCache setObject: expression
+                                        forKey: definition];
     }
-    
+
     return expression;
 }
 
