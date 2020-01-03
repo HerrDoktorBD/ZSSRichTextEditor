@@ -37,7 +37,11 @@
         UIButton* btn = [UIButton buttonWithType: UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, 44, 44);
 
-        [btn setImage: [[UIImage imageNamed: itemName] imageWithRenderingMode: UIImageRenderingModeAlwaysTemplate]
+        UIImage* image = [[UIImage imageNamed: itemName
+                                     inBundle: [self bundle]
+                compatibleWithTraitCollection: nil]
+                          imageWithRenderingMode: UIImageRenderingModeAlwaysTemplate];
+        [btn setImage: image
              forState: UIControlStateNormal];
         btn.imageView.tintColor = [UIColor colorNamed: @"tintColor"];
         [btn addTarget: target

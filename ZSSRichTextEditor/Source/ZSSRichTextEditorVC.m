@@ -11,11 +11,13 @@
 #import <WebKit/WebKit.h>
 
 #import "ZSSRichTextEditorVC.h"
+
 #import "ZSSBarButtonItem.h"
-#import "HRColorUtil.h"
 #import "ZSSTextView.h"
-#import "HRColorPickerViewController.h"
 #import "ZSSFontsViewController.h"
+
+#import "HRColorPickerViewController.h"
+#import "HRColorUtil.h"
 
 @import JavaScriptCore;
 
@@ -59,7 +61,9 @@ static Class hackishFixClass = Nil;
     
     UIView *browserView = nil;
     for (UIView *subview in scrollView.subviews) {
+
         if ([NSStringFromClass([subview class]) hasPrefix:@"WKWebBrowserView"]) {
+
             browserView = subview;
             break;
         }
@@ -72,7 +76,9 @@ static Class hackishFixClass = Nil;
 }
 
 - (void) ensureHackishSubclassExistsOfBrowserViewClass:(Class)browserViewClass {
+
     if (!hackishFixClass) {
+
         Class newClass = objc_allocateClassPair(browserViewClass, hackishFixClassName, 0);
         newClass = objc_allocateClassPair(browserViewClass, hackishFixClassName, 0);
         IMP nilImp = [self methodForSelector:@selector(methodReturningNil)];
@@ -84,11 +90,13 @@ static Class hackishFixClass = Nil;
 }
 
 - (BOOL) hidesInputAccessoryView {
+
     UIView *browserView = [self hackishlyFoundBrowserView];
     return [browserView class] == hackishFixClass;
 }
 
 - (void) setHidesInputAccessoryView:(BOOL)value {
+
     UIView *browserView = [self hackishlyFoundBrowserView];
     if (browserView == nil) {
         return;
@@ -118,104 +126,105 @@ static Class hackishFixClass = Nil;
     /*
      *  Holder for all of the toolbar components
      */
-    @property (nonatomic, strong) UIView* toolbarView;
+    @property (nonatomic, strong) UIView*                  toolbarView;
 
     /*
      *  Toolbars containing ZSSBarButtonItems
      */
-    @property (nonatomic, strong) UIToolbar* toolbar;
-    @property (nonatomic, strong) UIToolbar* toolbar2;
+    @property (nonatomic, strong) UIToolbar*               toolbar;
+    @property (nonatomic, strong) UIToolbar*               toolbar2;
 
     /*
      *  Scroll view containing the toolbar
      */
-    @property (nonatomic, strong) UIScrollView* toolbarScrollView;
+    @property (nonatomic, strong) UIScrollView*            toolbarScrollView;
 
     /*
      *  String for the HTML
      */
-    @property (nonatomic, strong) NSString* htmlString;
+    @property (nonatomic, strong) NSString*                htmlString;
 
     /*
      *  WKWebView for writing/editing/displaying the content
      */
-    @property (nonatomic, strong) WKWebView* editorView;
+    @property (nonatomic, strong) WKWebView*               editorView;
 
     /*
      *  ZSSTextView for displaying the source code for what is displayed in the editor view
      */
-    @property (nonatomic, strong) ZSSTextView* sourceView;
+    @property (nonatomic, strong) ZSSTextView*             sourceView;
 
     /*
      *  BOOL for holding if the resources are loaded or not
      */
-    @property (nonatomic) BOOL resourcesLoaded;
+    @property (nonatomic)         BOOL                     resourcesLoaded;
 
     /*
      *  Array holding the enabled editor items
      */
-    @property (nonatomic, strong) NSArray *highlightedBarButtonLabels;
+    @property (nonatomic, strong) NSArray*                 highlightedBarButtonLabels;
 
     /*
      *  NSString holding the selected links URL value
      */
-    @property (nonatomic, strong) NSString *selectedLinkURL;
+    @property (nonatomic, strong) NSString*                selectedLinkURL;
 
     /*
      *  NSString holding the selected links title value
      */
-    @property (nonatomic, strong) NSString *selectedLinkTitle;
+    @property (nonatomic, strong) NSString*                selectedLinkTitle;
 
     /*
      *  NSString holding the selected image URL value
      */
-    @property (nonatomic, strong) NSString *selectedImageURL;
+    @property (nonatomic, strong) NSString*                selectedImageURL;
 
     /*
      *  NSString holding the selected image Alt value
      */
-    @property (nonatomic, strong) NSString *selectedImageAlt;
+    @property (nonatomic, strong) NSString*                selectedImageAlt;
 
     /*
      *  CGFloat holding the selected image scale value
      */
-    @property (nonatomic, assign) CGFloat selectedImageScale;
+    @property (nonatomic, assign) CGFloat                  selectedImageScale;
 
     /*
      *  NSString holding the base64 value of the current image
      */
-    @property (nonatomic, strong) NSString *imageBase64String;
+    @property (nonatomic, strong) NSString*                imageBase64String;
 
     /*
      *  NSString holding the html
      */
     @property (nonatomic, strong) NSString*                internalHTML;
+
     @property (nonatomic, strong) NSString*                oldHTML;
     @property (nonatomic, strong) NSString*                oldText;
 
     /*
      *  NSString holding the css
      */
-    @property (nonatomic, strong) NSString *customCSS;
+    @property (nonatomic, strong) NSString*                customCSS;
 
     /*
      *  BOOL for if the editor is loaded or not
      */
-    @property (nonatomic) BOOL editorLoaded;
+    @property (nonatomic)         BOOL                     editorLoaded;
 
     /*
      *  BOOL for if the editor is paste or not
      */
-    @property (nonatomic) BOOL editorPaste;
+    @property (nonatomic)         BOOL                     editorPaste;
     /*
      *  Image Picker for selecting photos from users photo library
      */
-    @property (nonatomic, strong) UIImagePickerController *imagePicker;
+    @property (nonatomic, strong) UIImagePickerController* imagePicker;
 
     // local var to hold first responder state after callback
-    @property (nonatomic) BOOL isFirstResponderUpdated;
+    @property (nonatomic)         BOOL                     isFirstResponderUpdated;
 
-    @property (nonatomic) CGRect safeFrame;
+    @property (nonatomic)         CGRect                   safeFrame;
 
 @end
 
