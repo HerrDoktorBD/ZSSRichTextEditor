@@ -8,12 +8,19 @@
 
 #import "ZSSLargeViewController.h"
 
+@interface ZSSLargeViewController() <ZSSRichTextEditorDelegate>
+
+@end
+
 @implementation ZSSLargeViewController
 
 - (void) viewDidLoad {
     [super viewDidLoad];
     
+    self.receiveEditorDidChangeEvents = YES;
+
     self.title = @"Large";
+    self.delegate = self;
 
     // HTML Content to set in the editor
     NSString *html = @"<h1>Large Editor</h1>"
@@ -27,6 +34,19 @@
 
     // Set the HTML contents of the editor
     [self setHTML: html];
+}
+
+#pragma ZSSRichTextEditorDelegate delegate
+
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+          didChangeText: (nullable NSString*) text
+                   html: (nullable NSString*) html {
+
+    //NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"Text has changed: %@", text);
+    NSLog(@"HTML has changed: %@", html);
+
+    //self.html = html; // save the html for the NewInfoAvailable notification on exit
 }
 
 - (void) didReceiveMemoryWarning {

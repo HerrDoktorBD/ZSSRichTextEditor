@@ -72,16 +72,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        ZSSDemoViewController *demo1 = [[ZSSDemoViewController alloc] init];
+        ZSSDemoViewController *demo1 = [ZSSDemoViewController new];
         [self.navigationController pushViewController:demo1 animated:YES];
+
     } else if (indexPath.row == 1) {
-        ZSSColorViewController *demo2 = [[ZSSColorViewController alloc] init];
+        ZSSColorViewController *demo2 = [ZSSColorViewController new];
         [self.navigationController pushViewController:demo2 animated:YES];
+
     } else if (indexPath.row == 2) {
-        ZSSLargeViewController *demo5 = [[ZSSLargeViewController alloc] init];
+        ZSSLargeViewController *demo5 = [ZSSLargeViewController new];
         [self.navigationController pushViewController:demo5 animated:YES];
+
     } else if (indexPath.row == 3) {
-        ZSSDemoViewController *demo1 = [[ZSSDemoViewController alloc] init];
+        ZSSDemoViewController *demo1 = [ZSSDemoViewController new];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:demo1];
         nav.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:nav animated:YES completion:nil];

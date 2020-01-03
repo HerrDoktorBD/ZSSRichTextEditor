@@ -8,11 +8,14 @@
 
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 #import "ZSSRichTextEditorVC.h"
 #import "ZSSBarButtonItem.h"
 #import "HRColorUtil.h"
 #import "ZSSTextView.h"
+#import "HRColorPickerViewController.h"
+#import "ZSSFontsViewController.h"
 
 @import JavaScriptCore;
 
@@ -112,10 +115,6 @@ static Class hackishFixClass = Nil;
                                   UIImagePickerControllerDelegate,
                                   HRColorPickerViewControllerDelegate,
                                   ZSSFontsViewControllerDelegate>
-
-    @property (nonatomic, strong) ZSSBarButtonItem*                   keyboardBtn; // keyboard dismiss button
-    @property (nonatomic, strong) ZSSBarButtonItem*                   showSourceBtn;
-
     /*
      *  Holder for all of the toolbar components
      */
@@ -135,17 +134,17 @@ static Class hackishFixClass = Nil;
     /*
      *  String for the HTML
      */
-    @property (nonatomic, strong) NSString *htmlString;
+    @property (nonatomic, strong) NSString* htmlString;
 
     /*
      *  WKWebView for writing/editing/displaying the content
      */
-    @property (nonatomic, strong) WKWebView *editorView;
+    @property (nonatomic, strong) WKWebView* editorView;
 
     /*
      *  ZSSTextView for displaying the source code for what is displayed in the editor view
      */
-    @property (nonatomic, strong) ZSSTextView *sourceView;
+    @property (nonatomic, strong) ZSSTextView* sourceView;
 
     /*
      *  BOOL for holding if the resources are loaded or not
@@ -190,7 +189,9 @@ static Class hackishFixClass = Nil;
     /*
      *  NSString holding the html
      */
-    @property (nonatomic, strong) NSString *internalHTML;
+    @property (nonatomic, strong) NSString*                internalHTML;
+    @property (nonatomic, strong) NSString*                oldHTML;
+    @property (nonatomic, strong) NSString*                oldText;
 
     /*
      *  NSString holding the css
@@ -300,6 +301,7 @@ static CGFloat kDefaultScale = 0.5;
     self.editorView.frame = self.safeFrame;
     self.sourceView.frame = self.safeFrame;
 
+#if DEBUG
     BOOL isLandscape = [ZSSRichTextEditorVC isOrientationWide];
     if (isLandscape) {
         NSLog(@"landscape");
@@ -307,6 +309,7 @@ static CGFloat kDefaultScale = 0.5;
     else {
         NSLog(@"portrait");
     }
+#endif
 }
 
 - (void) viewWillTransitionToSize: (CGSize) size
@@ -406,16 +409,37 @@ static CGFloat kDefaultScale = 0.5;
 
 - (void) createToolbarView {
 
-    CGFloat frameWidth = _safeFrame.size.width;
+    [self createToolbarScrollView];
 
     CGFloat x = _safeFrame.origin.x;
     CGFloat y = _safeFrame.size.height - 44;
     CGFloat w = _safeFrame.size.width - x;
 
-    CGFloat cropperWidth = 2 * 44;
+    // toolbarView
+    self.toolbarView = [[UIView alloc] initWithFrame: CGRectMake(x,
+                                                                 y,
+                                                                 w,
+                                                                 44)];
+    self.toolbarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
+    [self.toolbarView addSubview: self.toolbarScrollView];
+
+    if (IS_IPAD)
+        return;
+
+    [self createKeyboardView];
+
+    [self updateHighlightForBarButtonItems];
+
+    [self.view addSubview: self.toolbarView];
+}
+
+- (void) createToolbarScrollView {
+    
+    CGFloat frameWidth = _safeFrame.size.width;
 
     // scrolling view
-    CGFloat scrollWidth = IS_IPAD ? frameWidth : frameWidth - cropperWidth;
+    CGFloat scrollWidth = IS_IPAD ? frameWidth : frameWidth - 2*44;
     self.toolbarScrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0,
                                                                              0,
                                                                              scrollWidth,
@@ -430,14 +454,11 @@ static CGFloat kDefaultScale = 0.5;
 
     // toolbar's backgroundColor will be the toolbarScrollView's backgroundColor
 
-    [self.toolbarScrollView addSubview: self.toolbar];
-
     NSMutableArray* items = [NSMutableArray array];
 
     UIBarButtonItem* negativeSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target: nil action: nil];
     negativeSpace.width = -14;
     [items addObject: negativeSpace];
-
     for (int type = ZSSBarButtonItemTypeBold;
              type <= ZSSBarButtonItemTypeQuickLink;
              type++) {
@@ -447,44 +468,26 @@ static CGFloat kDefaultScale = 0.5;
                                                                      action: @selector(barButtonItemAction:)];
         [items addObject: item];
     }
-    //[items addObject: flexibleItem];
-
     self.toolbar.items = items;
-    //    [self.toolbarView setItems: items
-    //                      animated: NO];
+    [items addObject: negativeSpace];
 
-    CGFloat toolbarWidth = (CGFloat)(items.count * 44);
+    CGFloat toolbarWidth = (CGFloat)((items.count-1) * 37.2);
     self.toolbar.frame = CGRectMake(0,
                                     0,
                                     toolbarWidth,
                                     44);
+    [self.toolbar sizeToFit];
+
+    [self.toolbarScrollView addSubview: self.toolbar];
+
     // make it scroll
-    self.toolbarScrollView.contentSize = CGSizeMake(self.toolbar.frame.size.width,
+    self.toolbarScrollView.contentSize = CGSizeMake(toolbarWidth,
                                                     44);
-    // toolbarView
-    self.toolbarView = [[UIView alloc] initWithFrame: CGRectMake(x,
-                                                                 y,
-                                                                 w,
-                                                                 44)];
-    self.toolbarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-
-    [self.toolbarView addSubview: self.toolbarScrollView];
-
-    if (IS_IPAD)
-        return;
-
-    [self createKeyboardButtons];
-
-    [self updateHighlightForBarButtonItems];
-
-    [self.view addSubview: self.toolbarView];
 }
 
-- (void) createKeyboardButtons {
+- (void) createKeyboardView {
 
     CGFloat frameWidth = _safeFrame.size.width;
-    //CGFloat cropperWidth = 2 * 44;
-    //CGFloat x = _safeFrame.origin.x;
 
     UIView* toolbarCropper = [[UIView alloc] initWithFrame: CGRectMake(frameWidth - 2*44,
                                                                        0,
@@ -511,14 +514,12 @@ static CGFloat kDefaultScale = 0.5;
     ZSSBarButtonItem* btn3 = [ZSSBarButtonItem barButtonItemForItemType: ZSSBarButtonItemTypeShowSource
                                                                  target: self
                                                                  action: @selector(showHTMLSource:)];
-    self.showSourceBtn = btn3;
     [items addObject: btn3];
 
     // keyboard button
     ZSSBarButtonItem* btn4 = [ZSSBarButtonItem barButtonItemForItemType: ZSSBarButtonItemTypeKeyboard
                                                                  target: self
                                                                  action: @selector(dismissKeyboard)];
-    self.keyboardBtn = btn4;
     [items addObject: btn4];
 
     self.toolbar2.items = items;
@@ -545,8 +546,6 @@ static CGFloat kDefaultScale = 0.5;
     for (ZSSBarButtonItem* item in self.toolbar2.items) {
         item.tintColor = color;
     }
-//    self.keyboardBtn.tintColor = color;
-//    self.showSourceBtn.tintColor = color;
 }
 
 - (void) setToolbarItemSelectedTintColor: (UIColor*) color {
@@ -720,41 +719,42 @@ static CGFloat kDefaultScale = 0.5;
 
     self.sourceView.text = html;
     
-    NSString *cleanedHTML = [self removeQuotesFromHTML: html];
-    NSString *trigger = [NSString stringWithFormat: @"zss_editor.setHTML(\"%@\");", cleanedHTML];
+    NSString* cleanedHTML = [self removeQuotesFromHTML: html];
+    NSString* trigger = [NSString stringWithFormat: @"zss_editor.setHTML(\"%@\");", cleanedHTML];
+    [self evaluateJavaScript: trigger];
+}
+
+- (void) insertHTML: (NSString*) html {
+
+    NSString* cleanedHTML = [self removeQuotesFromHTML: html];
+    NSString* trigger = [NSString stringWithFormat: @"zss_editor.insertHTML(\"%@\");", cleanedHTML];
     [self evaluateJavaScript: trigger];
 }
 
 - (void) getHTML: (void (^)(id, NSError* error)) completionHandler {
 
-    [self.editorView evaluateJavaScript: ZSSEditorHTML
-                      completionHandler: ^(NSString *result, NSError *error) {
+    [self.editorView evaluateJavaScript: @"zss_editor.getHTML();"
+                      completionHandler: ^(NSString* result, NSError* error) {
 
         if (error != NULL) {
             NSLog(@"HTML Parsing Error: %@", error);
         }
 
-        NSLog(@"result:\n%@", result);
+        //NSLog(@"result:\n%@", result);
         NSString* html = [self removeQuotesFromHTML: result];
-        NSLog(@"html:\n%@", html);
+        //NSLog(@"html:\n%@", html);
 
-        [self tidyHTML: html completionHandler: ^(NSString *result, NSError *error) {
+        [self tidyHTML: html completionHandler: ^(NSString* result, NSError* error) {
 
             completionHandler(result, error);
         }];
     }];
 }
 
-- (void) insertHTML: (NSString*) html {
-
-    NSString *cleanedHTML = [self removeQuotesFromHTML: html];
-    NSString *trigger = [NSString stringWithFormat: @"zss_editor.insertHTML(\"%@\");", cleanedHTML];
-    [self evaluateJavaScript: trigger];
-}
-
 - (void) getText: (void (^)(id, NSError* error)) completionHandler {
     
-    [self.editorView evaluateJavaScript: ZSSEditorText completionHandler: ^(NSString *result, NSError *error) {
+    [self.editorView evaluateJavaScript: @"zss_editor.getText();"
+                      completionHandler: ^(NSString* result, NSError* error) {
         
         if (error != NULL)
             NSLog(@"Text Parsing Error: %@", error);
@@ -763,44 +763,59 @@ static CGFloat kDefaultScale = 0.5;
     }];
 }
 
+/*
 - (void) updateEditor {
 
-    [self getHTML: ^(NSString *htmlResult, NSError* error) {
+    [self getHTML: ^(NSString* htmlResult, NSError* error) {
 
-        [self getText: ^(NSString *textResult, NSError* error) {
+        [self getText: ^(NSString* textResult, NSError* error) {
 
-            [self editorDidChangeWithText: textResult andHTML: htmlResult];
+            [self editorDidChangeWithText: textResult
+                                  andHTML: htmlResult];
         }];
     }];
 }
+*/
 
-- (void) dismissKeyboard {
+- (void) updateEditor {
 
-    [self.view endEditing: YES];
-}
+    [self getHTMLAndTextWithCompletionHandler: ^(NSString* html,
+                                                 NSString* text) {
 
-- (BOOL) isFirstResponder {
-    
-    [self.editorView evaluateJavaScript: ZSSEditorContent completionHandler: ^(NSNumber *result, NSError *error) {
-        
-        // save the result as a bool and then update the UI
-        self.isFirstResponderUpdated = [result boolValue];
-        if (self.isFirstResponderUpdated == true) {
-            [self becomeFirstResponder];
-        } else {
-            [self resignFirstResponder];
+        if (![html isEqualToString: self.oldHTML]) {
+
+            self.oldHTML = html;
+            self.oldText = text;
+
+            if ([self.delegate respondsToSelector: @selector(richTextEditor:didChangeText:html:)]) {
+                [self.delegate richTextEditor: self
+                                didChangeText: text
+                                         html: [self processQuotesFromHTML: html]];
+            }
+
+            [self checkForMentionOrHashtagInText: text];
         }
     }];
-    
-    //this state is old and will quickly be updated after the callback above completes
-    //TODO: refactor to find a more elegant approach
-    return self.isFirstResponderUpdated;
 }
 
-- (void) setHeading: (NSString*) heading {
+- (void) getHTMLAndTextWithCompletionHandler: (void (^)(NSString* html, NSString* text)) completion {
 
-    NSString* js = [NSString stringWithFormat: @"zss_editor.setHeading('%@');", heading];
-    [self evaluateJavaScript: js];
+    [self.editorView evaluateJavaScript: @"zss_editor.getHTML();"
+                      completionHandler: ^(id object, NSError* error) {
+
+        NSString* html = object;
+        html = [self removeQuotesFromHTML: html];
+
+        [self tidyHTML: html completionHandler: ^(NSString* html, NSError* error) {
+
+            [self.editorView evaluateJavaScript: @"zss_editor.getText();"
+                              completionHandler: ^(id object, NSError* error) {
+
+                NSString* text = object;
+                completion(html, text);
+            }];
+        }];
+    }];
 }
 
 - (void) showHTMLSource: (ZSSBarButtonItem*) barButtonItem {
@@ -824,6 +839,36 @@ static CGFloat kDefaultScale = 0.5;
         self.editorView.hidden = NO;
         [self enableToolbarItems: YES];
     }
+}
+
+- (void) dismissKeyboard {
+
+    [self.view endEditing: YES];
+}
+
+- (BOOL) isFirstResponder {
+
+    [self.editorView evaluateJavaScript: @"document.activeElement.id=='zss_editor_content'"
+                      completionHandler: ^(NSNumber *result, NSError *error) {
+        
+        // save the result as a bool and then update the UI
+        self.isFirstResponderUpdated = [result boolValue];
+        if (self.isFirstResponderUpdated == true) {
+            [self becomeFirstResponder];
+        } else {
+            [self resignFirstResponder];
+        }
+    }];
+    
+    //this state is old and will quickly be updated after the callback above completes
+    //TODO: refactor to find a more elegant approach
+    return self.isFirstResponderUpdated;
+}
+
+- (void) setHeading: (NSString*) heading {
+
+    NSString* js = [NSString stringWithFormat: @"zss_editor.setHeading('%@');", heading];
+    [self evaluateJavaScript: js];
 }
 
 - (void) evaluateJavaScript: (NSString*) js {
@@ -1216,7 +1261,9 @@ static CGFloat kDefaultScale = 0.5;
 
     CGRect line = [textView caretRectForPosition: textView.selectedTextRange.start];
     CGFloat overflow = line.origin.y + line.size.height - ( textView.contentOffset.y + textView.bounds.size.height - textView.contentInset.bottom - textView.contentInset.top );
-    if ( overflow > 0 ) {
+
+    if (overflow > 0) {
+
         // We are at the bottom of the visible text and introduced a line feed, scroll down (iOS 7 does not do it)
         // Scroll caret to visible area
         CGPoint offset = textView.contentOffset;
@@ -1717,6 +1764,17 @@ static CGFloat kDefaultScale = 0.5;
 }
 
 #pragma mark - Utilities
+
+- (NSString*) processQuotesFromHTML: (NSString*) html {
+
+    //NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"html before: %@", html);
+
+    html = [html stringByReplacingOccurrencesOfString: @"\\\"" withString: @"\""];
+
+    //NSLog(@"html after: %@", html);
+    return html;
+}
 
 - (NSString*) removeQuotesFromHTML: (NSString*) html {
 

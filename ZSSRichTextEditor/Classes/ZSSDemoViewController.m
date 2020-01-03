@@ -21,8 +21,6 @@
     NSString *customCSS = @"";
     [self setCSS:customCSS];
 
-    self.receiveEditorDidChangeEvents = NO;
-
     // Export HTML
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(exportHTML)];
     
@@ -69,8 +67,9 @@
     }];
 }
 
-- (void) editorDidChangeWithText:(NSString *)text andHTML:(NSString *)html {
-    
+- (void) editorDidChangeWithText: (NSString*) text
+                         andHTML: (NSString*) html {
+
     NSLog(@"Text Has Changed: %@", text);
     NSLog(@"HTML Has Changed: %@", html);
 }
