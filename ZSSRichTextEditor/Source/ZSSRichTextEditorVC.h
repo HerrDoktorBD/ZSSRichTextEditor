@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 @class ZSSRichTextEditorVC;
 @class ZSSBarButtonItem;
 

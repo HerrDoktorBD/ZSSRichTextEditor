@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Zed Said Studio. All rights reserved.
 //
 
-#import "CYRTextView.h"
+#import <RichTextEditor/CYRTextView.h>
+
+#pragma once
 
 @interface ZSSTextView: CYRTextView
 

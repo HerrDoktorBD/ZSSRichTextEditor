@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 typedef NS_ENUM(NSInteger, ZSSBarButtonItemType) {
     
     ZSSBarButtonItemTypeCustom = 0,

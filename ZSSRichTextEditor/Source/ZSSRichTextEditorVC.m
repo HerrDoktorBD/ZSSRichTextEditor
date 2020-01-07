@@ -16,8 +16,9 @@
 #import "ZSSTextView.h"
 #import "ZSSFontsViewController.h"
 
-#import "HRColorPickerViewController.h"
-#import "HRColorUtil.h"
+#import <RichTextEditor/RichTextEditor.h>
+//#import "HRColorPickerViewController.h"
+//#import "HRColorUtil.h"
 
 @import JavaScriptCore;
 

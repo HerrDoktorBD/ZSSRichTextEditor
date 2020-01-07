@@ -28,12 +28,10 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Microphone used in ZSSRichTextEditor</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photos used in ZSSRichTextEditor</string>
 	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
+	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

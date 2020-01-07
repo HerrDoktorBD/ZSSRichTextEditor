@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 typedef NS_ENUM(int16_t, ZSSFontFamily) {
     
     ZSSFontFamilyDefault = 0,
@@ -17,8 +19,6 @@ typedef NS_ENUM(int16_t, ZSSFontFamily) {
     ZSSFontFamilyPalatino = 4,
     ZSSFontFamilyTimesNew = 5,
     ZSSFontFamilyCourierNew = 6,
-    
-    
 };
 
 @protocol ZSSFontsViewControllerDelegate
@@ -30,7 +30,6 @@ typedef NS_ENUM(int16_t, ZSSFontFamily) {
     id<ZSSFontsViewControllerDelegate> __weak delegate;
     
     ZSSFontFamily _font;
-    
 }
 
 + (ZSSFontsViewController *)cancelableFontPickerViewControllerWithFontFamily:(ZSSFontFamily)fontFamily;
