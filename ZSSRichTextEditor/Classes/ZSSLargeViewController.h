@@ -8,8 +8,8 @@
 
 #import "ZSSRichTextEditorVC.h"
 
-@interface ZSSLargeViewController: ZSSRichTextEditorVC
+#pragma once
 
-    //@property (nonatomic, weak, nullable) id<ZSSRichTextEditorDelegate> delegate;
+@interface ZSSLargeViewController: ZSSRichTextEditorVC
 
 @end

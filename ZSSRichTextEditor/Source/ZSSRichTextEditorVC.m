@@ -12,13 +12,7 @@
 
 #import "ZSSRichTextEditorVC.h"
 
-#import "ZSSBarButtonItem.h"
-#import "ZSSTextView.h"
-#import "ZSSFontsViewController.h"
-
 #import <RichTextEditor/RichTextEditor.h>
-//#import "HRColorPickerViewController.h"
-//#import "HRColorUtil.h"
 
 @import JavaScriptCore;
 
@@ -764,20 +758,6 @@ static CGFloat kDefaultScale = 0.5;
     }];
 }
 
-/*
-- (void) updateEditor {
-
-    [self getHTML: ^(NSString* htmlResult, NSError* error) {
-
-        [self getText: ^(NSString* textResult, NSError* error) {
-
-            [self editorDidChangeWithText: textResult
-                                  andHTML: htmlResult];
-        }];
-    }];
-}
-*/
-
 - (void) updateEditor {
 
     [self getHTMLAndTextWithCompletionHandler: ^(NSString* html,
@@ -789,6 +769,8 @@ static CGFloat kDefaultScale = 0.5;
             self.oldText = text;
 
             if ([self.delegate respondsToSelector: @selector(richTextEditor:didChangeText:html:)]) {
+
+                // call delegate
                 [self.delegate richTextEditor: self
                                 didChangeText: text
                                          html: [self processQuotesFromHTML: html]];
@@ -1273,6 +1255,7 @@ static CGFloat kDefaultScale = 0.5;
         // Cannot animate with setContentOffset:animated: or caret will not appear
         [UIView animateWithDuration: .2
                          animations: ^{
+
             [textView setContentOffset: offset];
         }];
     }
@@ -1289,16 +1272,16 @@ static CGFloat kDefaultScale = 0.5;
     /*
      Callback for when text is changed, written by @madebydouglas derived from richardortiz84 https://github.com/nnhubbard/ZSSRichTextEditor/issues/5
      */
-    
+
     if ([messageString isEqualToString: @"paste"]) {
         self.editorPaste = YES;
     }
 
     if ([messageString isEqualToString: @"input"]) {
-        
+
         if (_receiveEditorDidChangeEvents)
             [self updateEditor];
-        
+
         [self getText: ^(NSString * result, NSError * _Nullable error) {
             [self checkForMentionOrHashtagInText: result];
         }];
@@ -1326,6 +1309,7 @@ static CGFloat kDefaultScale = 0.5;
         BOOL shouldInteract = NO;
         if ([self.delegate respondsToSelector: @selector(richTextEditor:shouldInteractWithURL:)]) {
 
+            // call delegate
             shouldInteract = [self.delegate richTextEditor: self
                                      shouldInteractWithURL: navigationAction.request.URL];
         }
@@ -1358,11 +1342,17 @@ static CGFloat kDefaultScale = 0.5;
         NSString *debug = [urlString stringByReplacingOccurrencesOfString:@"debug://" withString:@""];
         debug = [debug stringByRemovingPercentEncoding];
         NSLog(@"%@", debug);
-        
+
     } else if ([urlString rangeOfString:@"scroll://"].location != NSNotFound) {
 
-        NSInteger position = [[urlString stringByReplacingOccurrencesOfString:@"scroll://" withString:@""] integerValue];
-        [self editorDidScrollWithPosition:position];
+        if ([self.delegate respondsToSelector: @selector(richTextEditor:didScrollToPosition:)]) {
+
+            NSInteger position = [[urlString stringByReplacingOccurrencesOfString:@"scroll://" withString:@""] integerValue];
+
+            // call delegate
+            [self.delegate richTextEditor: self
+                      didScrollToPosition: position];
+        }
     }
 }
 
@@ -1380,9 +1370,6 @@ static CGFloat kDefaultScale = 0.5;
 
     if (self.customCSS)
         [self updateCSS];
-
-    //self.editingEnabled = self.editingEnabled;
-    //self.clearsFormatOnPaste = self.clearsFormatOnPaste;
 
     if (self.shouldShowKeyboard) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -1414,8 +1401,8 @@ static CGFloat kDefaultScale = 0.5;
 
         NSString *lastWord = nil;
         NSString *matchedWord = nil;
-        BOOL ContainsHashtag = NO;
-        BOOL ContainsMention = NO;
+        BOOL containsHashtag = NO;
+        BOOL containsMention = NO;
 
         NSRange range = [text rangeOfString:@" " options:NSBackwardsSearch];
         lastWord = [text substringFromIndex:range.location];
@@ -1431,10 +1418,10 @@ static CGFloat kDefaultScale = 0.5;
                 NSRange wordRange = [match rangeAtIndex:1];
                 NSString *word = [lastWord substringWithRange:wordRange];
                 matchedWord = word;
-                ContainsHashtag = YES;
+                containsHashtag = YES;
             }
             
-            if (!ContainsHashtag) {
+            if (!containsHashtag) {
                 
                 //Check if last word typed starts with a @
                 NSRegularExpression *mentionRegex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:nil];
@@ -1445,17 +1432,25 @@ static CGFloat kDefaultScale = 0.5;
                     NSRange wordRange = [match rangeAtIndex:1];
                     NSString *word = [lastWord substringWithRange:wordRange];
                     matchedWord = word;
-                    ContainsMention = YES;
+                    containsMention = YES;
                 }
             }
         }
-        
-        if (ContainsHashtag) {
-            [self hashtagRecognizedWithWord:matchedWord];
+
+        if (containsHashtag &&
+            [self.delegate respondsToSelector: @selector(richTextEditor:didRecognizeHashtag:)]) {
+
+            // call delegate
+            [self.delegate richTextEditor: self
+                      didRecognizeHashtag: matchedWord];
         }
-        
-        if (ContainsMention) {
-            [self mentionRecognizedWithWord:matchedWord];
+
+        if (containsMention &&
+            [self.delegate respondsToSelector: @selector(richTextEditor:didRecognizeMention:)]) {
+
+            // call delegate
+            [self.delegate richTextEditor: self
+                      didRecognizeMention: matchedWord];
         }
     }
 }
@@ -1464,15 +1459,6 @@ static CGFloat kDefaultScale = 0.5;
 
 // Blank implementation
 - (void) editorDidScrollWithPosition:(NSInteger)position {}
-
-// Blank implementation
-- (void) editorDidChangeWithText:(NSString *)text andHTML:(NSString *)html  {}
-
-// Blank implementation
-- (void) hashtagRecognizedWithWord:(NSString *)word {}
-
-// Blank implementation
-- (void) mentionRecognizedWithWord:(NSString *)word {}
 
 #pragma mark - Image Picker Delegate
 

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#pragma once
+
 #import "ZSSRichTextEditorVC.h"
 
-@interface ZSSDemoViewController : ZSSRichTextEditorVC
+@interface ZSSDemoViewController: ZSSRichTextEditorVC
 
 @end

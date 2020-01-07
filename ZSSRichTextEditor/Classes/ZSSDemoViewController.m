@@ -10,13 +10,18 @@
 #import "ZSSDemoPickerViewController.h"
 #import "DemoModalViewController.h"
 
+@interface ZSSDemoViewController() <ZSSRichTextEditorDelegate>
+
+@end
+
 @implementation ZSSDemoViewController
 
 - (void) viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Standard";
-    
+    self.delegate = self;
+
     //Set Custom CSS
     NSString *customCSS = @"";
     [self setCSS:customCSS];
@@ -67,20 +72,28 @@
     }];
 }
 
-- (void) editorDidChangeWithText: (NSString*) text
-                         andHTML: (NSString*) html {
+#pragma ZSSRichTextEditorDelegate delegate
 
-    NSLog(@"Text Has Changed: %@", text);
-    NSLog(@"HTML Has Changed: %@", html);
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+          didChangeText: (nullable NSString*) text
+                   html: (nullable NSString*) html {
+
+    //NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"Text has changed: %@", text);
+    NSLog(@"HTML has changed: %@", html);
+
+    //self.html = html; // save the html for the NewInfoAvailable notification on exit
 }
 
-- (void) hashtagRecognizedWithWord:(NSString *)word {
-    
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+    didRecognizeHashtag: (nullable NSString*) word {
+
     NSLog(@"Hashtag has been recognized: %@", word);
 }
 
-- (void) mentionRecognizedWithWord:(NSString *)word {
-    
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+    didRecognizeMention: (nullable NSString*) word {
+
     NSLog(@"Mention has been recognized: %@", word);
 }
 

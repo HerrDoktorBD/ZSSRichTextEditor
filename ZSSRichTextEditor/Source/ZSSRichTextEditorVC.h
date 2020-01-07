@@ -153,22 +153,6 @@ NS_ASSUME_NONNULL_BEGIN
                   title: (NSString*) title;
 
     /**
-     *  Text change callback with text and html
-     */
-    - (void) editorDidChangeWithText: (NSString*) text
-                             andHTML: (NSString*) html;
-
-    /**
-     *  Hashtag callback with word
-     */
-    - (void) hashtagRecognizedWithWord: (NSString*) word;
-
-    /**
-     *  Mention callback with word
-     */
-    - (void) mentionRecognizedWithWord: (NSString*) word;
-
-    /**
      *  Set custom css
      */
     - (void) setCSS: (NSString*) css;

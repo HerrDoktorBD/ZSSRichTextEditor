@@ -7,16 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23065BF51A06BA67001BA0B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23065BF41A06BA67001BA0B0 /* Images.xcassets */; };
 		2343B1DA199B2C9300349048 /* ZSSDemoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343B1D9199B2C9300349048 /* ZSSDemoList.m */; };
 		2343B1DD199B34B500349048 /* ZSSColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343B1DC199B34B500349048 /* ZSSColorViewController.m */; };
 		2343B1E0199BE4D000349048 /* ZSSLargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343B1DF199BE4D000349048 /* ZSSLargeViewController.m */; };
 		2343B229199D237100349048 /* ZSSPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343B228199D237100349048 /* ZSSPlaceholderViewController.m */; };
 		23A76DC4187532F1000169F6 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 23A76DC2187532F1000169F6 /* editor.html */; };
 		23A76DC61875345B000169F6 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 23A76DC3187532F1000169F6 /* ZSSRichTextEditor.js */; };
-		4513B3D8184E8F5100A9CA86 /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B3D7184E8F5100A9CA86 /* ZSSBarButtonItem.m */; };
-		4552C491189A094C004EF847 /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552C490189A094C004EF847 /* ZSSTextView.m */; };
-		456285B2184D55D800B6168E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 456285B1184D55D800B6168E /* Icon@2x.png */; };
 		4581EB80184845790048CAB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB7F184845790048CAB0 /* Foundation.framework */; };
 		4581EB82184845790048CAB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB81184845790048CAB0 /* CoreGraphics.framework */; };
 		4581EB84184845790048CAB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB83184845790048CAB0 /* UIKit.framework */; };
@@ -31,10 +27,10 @@
 		DB1D27A61D79F62D00EC1CBD /* DemoModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1D27A51D79F62D00EC1CBD /* DemoModalViewController.m */; };
 		DB703BB11D7B2FEA0013C608 /* jQuery.js in Resources */ = {isa = PBXBuildFile; fileRef = DB703BB01D7B2FEA0013C608 /* jQuery.js */; };
 		DB703BB31D7B31D10013C608 /* JSBeautifier.js in Resources */ = {isa = PBXBuildFile; fileRef = DB703BB21D7B31D10013C608 /* JSBeautifier.js */; };
-		DB703BB61D7B73600013C608 /* ZSSFontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB703BB51D7B73600013C608 /* ZSSFontsViewController.m */; };
 		EA58016D23B8F2DF003D82D3 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA58016C23B8F2DE003D82D3 /* colors.xcassets */; };
 		EA92108B23C4E227001AEC3E /* RichTextEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA92108A23C4E227001AEC3E /* RichTextEditor.framework */; };
 		EA92108C23C4E227001AEC3E /* RichTextEditor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA92108A23C4E227001AEC3E /* RichTextEditor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9210F423C4EFA1001AEC3E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,7 +48,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		23065BF41A06BA67001BA0B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2343B1D8199B2C9300349048 /* ZSSDemoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSDemoList.h; path = Classes/ZSSDemoList.h; sourceTree = "<group>"; };
 		2343B1D9199B2C9300349048 /* ZSSDemoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSDemoList.m; path = Classes/ZSSDemoList.m; sourceTree = "<group>"; };
 		2343B1DB199B34B500349048 /* ZSSColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSColorViewController.h; path = Classes/ZSSColorViewController.h; sourceTree = "<group>"; };
@@ -63,11 +58,6 @@
 		2343B228199D237100349048 /* ZSSPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSPlaceholderViewController.m; path = Classes/ZSSPlaceholderViewController.m; sourceTree = "<group>"; };
 		23A76DC2187532F1000169F6 /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = editor.html; path = Source/editor.html; sourceTree = "<group>"; };
 		23A76DC3187532F1000169F6 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = ZSSRichTextEditor.js; path = Source/ZSSRichTextEditor.js; sourceTree = "<group>"; };
-		4513B3D6184E8F5100A9CA86 /* ZSSBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSBarButtonItem.h; path = Source/ZSSBarButtonItem.h; sourceTree = "<group>"; };
-		4513B3D7184E8F5100A9CA86 /* ZSSBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSBarButtonItem.m; path = Source/ZSSBarButtonItem.m; sourceTree = "<group>"; };
-		4552C48F189A094C004EF847 /* ZSSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSTextView.h; path = Source/ZSSTextView.h; sourceTree = "<group>"; };
-		4552C490189A094C004EF847 /* ZSSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSTextView.m; path = Source/ZSSTextView.m; sourceTree = "<group>"; };
-		456285B1184D55D800B6168E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4581EB7C184845790048CAB0 /* ZSSRichTextEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZSSRichTextEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4581EB7F184845790048CAB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4581EB81184845790048CAB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,11 +80,10 @@
 		DB1D27A51D79F62D00EC1CBD /* DemoModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModalViewController.m; sourceTree = "<group>"; };
 		DB703BB01D7B2FEA0013C608 /* jQuery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = jQuery.js; path = Source/jQuery.js; sourceTree = "<group>"; };
 		DB703BB21D7B31D10013C608 /* JSBeautifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = JSBeautifier.js; path = Source/JSBeautifier.js; sourceTree = "<group>"; };
-		DB703BB41D7B73600013C608 /* ZSSFontsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSFontsViewController.h; path = Source/ZSSFontsViewController.h; sourceTree = "<group>"; };
-		DB703BB51D7B73600013C608 /* ZSSFontsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSFontsViewController.m; path = Source/ZSSFontsViewController.m; sourceTree = "<group>"; };
 		EA58016B23B7F609003D82D3 /* ZSSRichTextEditorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSRichTextEditorVC.h; path = Source/ZSSRichTextEditorVC.h; sourceTree = "<group>"; };
 		EA58016C23B8F2DE003D82D3 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		EA92108A23C4E227001AEC3E /* RichTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RichTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9210F423C4EFA1001AEC3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,19 +121,6 @@
 				DB1D27A51D79F62D00EC1CBD /* DemoModalViewController.m */,
 			);
 			name = Demo;
-			sourceTree = "<group>";
-		};
-		456A5977189C58C400FAEF89 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4513B3D6184E8F5100A9CA86 /* ZSSBarButtonItem.h */,
-				4513B3D7184E8F5100A9CA86 /* ZSSBarButtonItem.m */,
-				4552C48F189A094C004EF847 /* ZSSTextView.h */,
-				4552C490189A094C004EF847 /* ZSSTextView.m */,
-				DB703BB41D7B73600013C608 /* ZSSFontsViewController.h */,
-				DB703BB51D7B73600013C608 /* ZSSFontsViewController.m */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		4581EB73184845780048CAB0 = {
@@ -194,12 +170,11 @@
 				946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */,
 				4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */,
 				4581EB8F1848457A0048CAB0 /* ZSSAppDelegate.m */,
-				456285B1184D55D800B6168E /* Icon@2x.png */,
 				4581EB871848457A0048CAB0 /* ZSSRichTextEditor-Info.plist */,
 				4581EB881848457A0048CAB0 /* InfoPlist.strings */,
 				4581EB8B1848457A0048CAB0 /* main.m */,
 				4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */,
-				23065BF41A06BA67001BA0B0 /* Images.xcassets */,
+				EA9210F423C4EFA1001AEC3E /* Images.xcassets */,
 				EA58016C23B8F2DE003D82D3 /* colors.xcassets */,
 			);
 			name = "Supporting Files";
@@ -210,7 +185,6 @@
 			children = (
 				EA58016B23B7F609003D82D3 /* ZSSRichTextEditorVC.h */,
 				4581EBBA184B0F5C0048CAB0 /* ZSSRichTextEditorVC.m */,
-				456A5977189C58C400FAEF89 /* Views */,
 				4581EBBE184BB92E0048CAB0 /* Editor Resources */,
 			);
 			name = ZSSRichTextEditor;
@@ -288,15 +262,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */,
 				23A76DC61875345B000169F6 /* ZSSRichTextEditor.js in Resources */,
 				EA58016D23B8F2DF003D82D3 /* colors.xcassets in Resources */,
 				23A76DC4187532F1000169F6 /* editor.html in Resources */,
 				DB703BB11D7B2FEA0013C608 /* jQuery.js in Resources */,
-				456285B2184D55D800B6168E /* Icon@2x.png in Resources */,
 				946ADB9B2285CA3B00DB27F2 /* LaunchScreen.storyboard in Resources */,
 				4581EB8A1848457A0048CAB0 /* InfoPlist.strings in Resources */,
 				DB703BB31D7B31D10013C608 /* JSBeautifier.js in Resources */,
-				23065BF51A06BA67001BA0B0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2343B1DA199B2C9300349048 /* ZSSDemoList.m in Sources */,
-				4552C491189A094C004EF847 /* ZSSTextView.m in Sources */,
 				2343B1E0199BE4D000349048 /* ZSSLargeViewController.m in Sources */,
 				4581EB8C1848457A0048CAB0 /* main.m in Sources */,
 				2343B1DD199B34B500349048 /* ZSSColorViewController.m in Sources */,
@@ -318,8 +290,6 @@
 				4581EBB81848F8190048CAB0 /* ZSSDemoViewController.m in Sources */,
 				DB1D27A61D79F62D00EC1CBD /* DemoModalViewController.m in Sources */,
 				45F80458189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m in Sources */,
-				4513B3D8184E8F5100A9CA86 /* ZSSBarButtonItem.m in Sources */,
-				DB703BB61D7B73600013C608 /* ZSSFontsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
