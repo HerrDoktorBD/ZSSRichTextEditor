@@ -25,19 +25,11 @@
  * $FreeBSD$
  */
 
-#import <UIKit/UIKit.h>
 #import "HRColorUtil.h"
 
-@interface HRColorCursor : UIView{
-    HRRGBColor _currentColor;
-}
+#pragma once
 
-
-+ (CGSize) cursorSize;
-+ (float) outlineSize;
-+ (float) shadowSize;
-
-- (id)initWithPoint:(CGPoint)point;
-- (void)setColorRed:(float)red andGreen:(float)green andBlue:(float)blue;
-
-@end
+// 角丸のパスをセット
+void HRSetRoundedRectanglePath(CGContextRef context,const CGRect rect,CGFloat radius);
+// かっこいい角丸の四角を描きます。色付き。
+void HRDrawSquareColorBatch(CGContextRef context,CGPoint position,HRRGBColor* color,float size);

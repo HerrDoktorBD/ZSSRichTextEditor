@@ -32,7 +32,6 @@
 
 @synthesize delegate;
 
-
 + (HRColorPickerViewController *)colorPickerViewControllerWithColor:(UIColor *)color
 {
     return [[HRColorPickerViewController alloc] initWithColor:color fullColor:NO saveStyle:HCPCSaveStyleSaveAlways];
@@ -53,15 +52,12 @@
     return [[HRColorPickerViewController alloc] initWithColor:color fullColor:YES saveStyle:HCPCSaveStyleSaveAndCancel];
 }
 
-
-
 - (id)initWithDefaultColor:(UIColor *)defaultColor
 {
     return [self initWithColor:defaultColor fullColor:NO saveStyle:HCPCSaveStyleSaveAlways];
 }
 
 - (id)initWithColor:(UIColor*)defaultColor fullColor:(BOOL)fullColor saveStyle:(HCPCSaveStyle)saveStyle
-
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
@@ -126,10 +122,6 @@
     }
 }
 
-- (void)saveColor:(id)sender{
-    [self save];
-}
-
 - (void)save
 {
     if (self.delegate) {
@@ -149,14 +141,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
-
 
 #pragma mark - View lifecycle
 

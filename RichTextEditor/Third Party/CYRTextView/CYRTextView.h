@@ -38,6 +38,8 @@
 #import <UIKit/UIKit.h>
 #import "CYRToken.h"
 
+#pragma once
+
 @interface CYRTextView: UITextView
 
     @property (nonatomic, strong) NSArray *tokens;

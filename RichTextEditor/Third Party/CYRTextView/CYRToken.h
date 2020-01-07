@@ -34,6 +34,8 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma once
+
 @interface CYRToken : NSObject
 
 @property (nonatomic, strong) NSString *name;

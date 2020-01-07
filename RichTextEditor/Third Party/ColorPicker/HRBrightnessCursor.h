@@ -27,6 +27,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 @interface HRBrightnessCursor : UIView
 
 - (id)initWithPoint:(CGPoint)point;

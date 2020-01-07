@@ -28,8 +28,11 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
+
 #import "HRColorUtil.h"
 #import "HRColorPickerMacros.h"
+
+#pragma once
 
 @class HRColorPickerView;
 

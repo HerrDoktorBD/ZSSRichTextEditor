@@ -27,6 +27,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // 0.0f~1.0fの値をとるRGBの構造体です
@@ -68,11 +70,8 @@ void RGBColorFromUIColor(const UIColor*,HRRGBColor*);
 int HexColorFromRGBColor(const HRRGBColor*);
 int HexColorFromUIColor(const UIColor*);
 
-
 // 同値チェック
 bool HRHSVColorEqualToColor(const HRHSVColor*,const HRHSVColor*);
 
-
 // 0.0f~1.0fに納まるxとy、彩度の下限、輝度からHSVを求める
 void HSVColorAt(HRHSVColor* hsv,float x,float y,float saturationLowerLimit,float brightness);
-

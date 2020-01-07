@@ -35,6 +35,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 @interface CYRLayoutManager: NSLayoutManager
 
     @property (nonatomic, strong) UIFont *lineNumberFont;

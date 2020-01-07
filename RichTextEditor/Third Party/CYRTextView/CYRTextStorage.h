@@ -34,6 +34,8 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma once
+
 @interface CYRTextStorage: NSTextStorage
 
     @property (nonatomic, strong) NSArray* tokens;

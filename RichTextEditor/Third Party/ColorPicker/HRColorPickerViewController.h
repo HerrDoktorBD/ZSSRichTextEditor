@@ -28,6 +28,8 @@
 #import <UIKit/UIKit.h>
 #import "HRColorPickerMacros.h"
 
+#pragma once
+
 @class HRColorPickerView;
 
 @protocol HRColorPickerViewControllerDelegate
@@ -49,7 +51,6 @@ typedef enum {
     UIColor *_color;
     BOOL _fullColor;
     HCPCSaveStyle _saveStyle;
-    
 }
 
 @property (nonatomic) int tag;
@@ -65,9 +66,6 @@ typedef enum {
  * @param saveStyle If it's HCPCSaveStyleSaveAlways, save color when self is closing. If it's HCPCSaveStyleSaveAndCancel, shows Cancel and Save button.
  */
 - (id)initWithColor:(UIColor*)defaultColor fullColor:(BOOL)fullColor saveStyle:(HCPCSaveStyle)saveStyle;
-
-/** @deprecated use -save: instead of this . */
-- (void)saveColor:(id)sender;
 
 - (void)save;
 - (void)save:(id)sender;
