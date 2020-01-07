@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Zed Said Studio. All rights reserved.
 //
 
-#import "ZSSRichTextEditorVC.h"
+#import <RichTextEditor/ZSSRichTextEditorVC.h>
 
-@interface ZSSColorViewController : ZSSRichTextEditorVC
+#pragma once
+
+@interface ZSSColorViewController: ZSSRichTextEditorVC
 
 @end

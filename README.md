@@ -60,11 +60,6 @@ self.toolbarItemTintColor = [UIColor greenColor];
 self.toolbarItemSelectedTintColor = [UIColor redColor];
 ```
 
-Show only specified buttons in the toolbar:
-```objective-c
-self.enabledToolbarItems = @[ZSSRichTextEditorToolbarBold, ZSSRichTextEditorToolbarH1, ZSSRichTextEditorToolbarParagraph];
-```
-
 Always show the toolbar even when the keyboard is hidden:
 ```objective-c
 self.alwaysShowToolbar = YES;
@@ -91,46 +86,6 @@ If you want to manually insert a link or image where the cursor is, you can use 
 **Insert Link**
 ```objective-c
 - (void)insertLink:(NSString *)url title:(NSString *)title;
-```
-
-Custom Pickers
----
-
-You can implement your own pickers for images and links if you have an alternate method that you are wanting to use. E.g., uploading an image from your camera roll then inserting the URL.
-
-When the alternate picker icon (crosshair) is tapped it will call the corresponding method, which you need to override in your `ZSSRichTextEditor` subclass (see example project):
-
-```objective-c
-- (void)showInsertURLAlternatePicker {
-    
-    [self dismissAlertView];
-    
-    // Show your custom picker
-    
-}
-
-
-- (void)showInsertImageAlternatePicker {
-    
-    [self dismissAlertView];
-    
-    // Show your custom picker
-    
-}
-```
-
-Custom Toolbar Buttons
----
-
-```objective-c
-UIButton *myButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, buttonWidth, 28.0f)];
-[myButton setTitle:@"My Button" forState:UIControlStateNormal];
-[myButton addTarget:self
-             action:@selector(didTapCustomToolbarButton:)
-   forControlEvents:UIControlEventTouchUpInside];
-
-[self addCustomToolbarItemWithButton:myButton];
-
 ```
 
 Custom CSS

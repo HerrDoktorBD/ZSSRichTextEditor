@@ -6,11 +6,9 @@
 //  Copyright (c) 2013 Zed Said Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <RichTextEditor/ZSSRichTextEditorVC.h>
 
 #pragma once
-
-#import "ZSSRichTextEditorVC.h"
 
 @interface ZSSDemoViewController: ZSSRichTextEditorVC
 

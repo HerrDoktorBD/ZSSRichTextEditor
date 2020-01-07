@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Zed Said Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "ZSSDemoViewController.h"
 
 @interface ZSSDemoPickerViewController : UIViewController

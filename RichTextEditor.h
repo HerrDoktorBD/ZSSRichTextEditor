@@ -16,6 +16,8 @@ FOUNDATION_EXPORT const unsigned char RichTextEditorVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <RichTextEditor/PublicHeader.h>
 
+#import <RichTextEditor/ZSSRichTextEditorVC.h>
+
 #import <RichTextEditor/ZSSBarButtonItem.h>
 #import <RichTextEditor/ZSSTextView.h>
 #import <RichTextEditor/ZSSFontsViewController.h>

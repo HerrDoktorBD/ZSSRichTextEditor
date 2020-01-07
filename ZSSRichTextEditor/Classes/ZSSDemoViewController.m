@@ -8,7 +8,6 @@
 
 #import "ZSSDemoViewController.h"
 #import "ZSSDemoPickerViewController.h"
-#import "DemoModalViewController.h"
 
 @interface ZSSDemoViewController() <ZSSRichTextEditorDelegate>
 

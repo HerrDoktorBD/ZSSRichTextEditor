@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA22F92623C50F40003CA0D3 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92023C50F40003CA0D3 /* ZSSRichTextEditor.js */; };
+		EA22F92723C50F40003CA0D3 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92123C50F40003CA0D3 /* editor.html */; };
+		EA22F92823C50F40003CA0D3 /* JSBeautifier.js in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92223C50F40003CA0D3 /* JSBeautifier.js */; };
+		EA22F92923C50F40003CA0D3 /* jQuery.js in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92323C50F40003CA0D3 /* jQuery.js */; };
+		EA22F92A23C50F40003CA0D3 /* ZSSRichTextEditorVC.h in Headers */ = {isa = PBXBuildFile; fileRef = EA22F92423C50F40003CA0D3 /* ZSSRichTextEditorVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA22F92B23C50F40003CA0D3 /* ZSSRichTextEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22F92523C50F40003CA0D3 /* ZSSRichTextEditorVC.m */; };
+		EA22F92D23C511F0003CA0D3 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92C23C511F0003CA0D3 /* colors.xcassets */; };
 		EA92108423C4E199001AEC3E /* RichTextEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = EA92108223C4E199001AEC3E /* RichTextEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA9210C323C4E494001AEC3E /* CYRTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BB23C4E493001AEC3E /* CYRTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA9210C423C4E494001AEC3E /* CYRToken.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BC23C4E493001AEC3E /* CYRToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA22F92023C50F40003CA0D3 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ZSSRichTextEditor.js; sourceTree = "<group>"; };
+		EA22F92123C50F40003CA0D3 /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = editor.html; sourceTree = "<group>"; };
+		EA22F92223C50F40003CA0D3 /* JSBeautifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSBeautifier.js; sourceTree = "<group>"; };
+		EA22F92323C50F40003CA0D3 /* jQuery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jQuery.js; sourceTree = "<group>"; };
+		EA22F92423C50F40003CA0D3 /* ZSSRichTextEditorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSRichTextEditorVC.h; path = RichTextEditor/ZSSRichTextEditorVC.h; sourceTree = "<group>"; };
+		EA22F92523C50F40003CA0D3 /* ZSSRichTextEditorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSRichTextEditorVC.m; path = RichTextEditor/ZSSRichTextEditorVC.m; sourceTree = "<group>"; };
+		EA22F92C23C511F0003CA0D3 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = colors.xcassets; path = RichTextEditor/colors.xcassets; sourceTree = "<group>"; };
 		EA92107F23C4E198001AEC3E /* RichTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92108223C4E199001AEC3E /* RichTextEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RichTextEditor.h; sourceTree = "<group>"; };
 		EA92108323C4E199001AEC3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,10 +97,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA22F91F23C50F40003CA0D3 /* Editor Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA22F92023C50F40003CA0D3 /* ZSSRichTextEditor.js */,
+				EA22F92123C50F40003CA0D3 /* editor.html */,
+				EA22F92223C50F40003CA0D3 /* JSBeautifier.js */,
+				EA22F92323C50F40003CA0D3 /* jQuery.js */,
+			);
+			name = "Editor Resources";
+			path = "RichTextEditor/Editor Resources";
+			sourceTree = "<group>";
+		};
 		EA92107523C4E198001AEC3E = {
 			isa = PBXGroup;
 			children = (
 				EA92108223C4E199001AEC3E /* RichTextEditor.h */,
+				EA22F91F23C50F40003CA0D3 /* Editor Resources */,
+				EA22F92423C50F40003CA0D3 /* ZSSRichTextEditorVC.h */,
+				EA22F92523C50F40003CA0D3 /* ZSSRichTextEditorVC.m */,
 				EA9210EA23C4EE3A001AEC3E /* ZSSBarButtonItem.h */,
 				EA9210EC23C4EE3A001AEC3E /* ZSSBarButtonItem.m */,
 				EA9210ED23C4EE3A001AEC3E /* ZSSFontsViewController.h */,
@@ -94,6 +123,7 @@
 				EA9210E823C4EE3A001AEC3E /* ZSSTextView.h */,
 				EA9210E923C4EE3A001AEC3E /* ZSSTextView.m */,
 				EA9210E623C4EDE2001AEC3E /* Images.xcassets */,
+				EA22F92C23C511F0003CA0D3 /* colors.xcassets */,
 				EA92108323C4E199001AEC3E /* Info.plist */,
 				EA92108E23C4E285001AEC3E /* Third Party */,
 				EA92108023C4E198001AEC3E /* Products */,
@@ -168,6 +198,7 @@
 				EA9210F323C4EE3A001AEC3E /* ZSSFontsViewController.h in Headers */,
 				EA9210F023C4EE3A001AEC3E /* ZSSBarButtonItem.h in Headers */,
 				EA9210E423C4E4BA001AEC3E /* HRColorPickerView.h in Headers */,
+				EA22F92A23C50F40003CA0D3 /* ZSSRichTextEditorVC.h in Headers */,
 				EA9210DA23C4E4BA001AEC3E /* HRColorUtil.h in Headers */,
 				EA9210C323C4E494001AEC3E /* CYRTextView.h in Headers */,
 				EA9210CA23C4E494001AEC3E /* CYRTextStorage.h in Headers */,
@@ -237,6 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9210E723C4EDE2001AEC3E /* Images.xcassets in Resources */,
+				EA22F92923C50F40003CA0D3 /* jQuery.js in Resources */,
+				EA22F92723C50F40003CA0D3 /* editor.html in Resources */,
+				EA22F92D23C511F0003CA0D3 /* colors.xcassets in Resources */,
+				EA22F92623C50F40003CA0D3 /* ZSSRichTextEditor.js in Resources */,
+				EA22F92823C50F40003CA0D3 /* JSBeautifier.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +294,7 @@
 				EA9210C923C4E494001AEC3E /* CYRTextView.m in Sources */,
 				EA9210C723C4E494001AEC3E /* CYRLayoutManager.m in Sources */,
 				EA9210DB23C4E4BA001AEC3E /* HRCgUtil.m in Sources */,
+				EA22F92B23C50F40003CA0D3 /* ZSSRichTextEditorVC.m in Sources */,
 				EA9210DD23C4E4BA001AEC3E /* HRColorPickerView.m in Sources */,
 				EA9210F223C4EE3A001AEC3E /* ZSSBarButtonItem.m in Sources */,
 			);
