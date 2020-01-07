@@ -15,8 +15,8 @@
 		EA22F92B23C50F40003CA0D3 /* ZSSRichTextEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22F92523C50F40003CA0D3 /* ZSSRichTextEditorVC.m */; };
 		EA22F92D23C511F0003CA0D3 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA22F92C23C511F0003CA0D3 /* colors.xcassets */; };
 		EA92108423C4E199001AEC3E /* RichTextEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = EA92108223C4E199001AEC3E /* RichTextEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA9210C323C4E494001AEC3E /* CYRTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BB23C4E493001AEC3E /* CYRTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA9210C423C4E494001AEC3E /* CYRToken.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BC23C4E493001AEC3E /* CYRToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210C323C4E494001AEC3E /* CYRTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BB23C4E493001AEC3E /* CYRTextView.h */; };
+		EA9210C423C4E494001AEC3E /* CYRToken.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210BC23C4E493001AEC3E /* CYRToken.h */; };
 		EA9210C523C4E494001AEC3E /* CYRTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210BD23C4E493001AEC3E /* CYRTextStorage.m */; };
 		EA9210C623C4E494001AEC3E /* CYRToken.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210BE23C4E493001AEC3E /* CYRToken.m */; };
 		EA9210C723C4E494001AEC3E /* CYRLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210BF23C4E493001AEC3E /* CYRLayoutManager.m */; };
@@ -24,25 +24,25 @@
 		EA9210C923C4E494001AEC3E /* CYRTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210C123C4E493001AEC3E /* CYRTextView.m */; };
 		EA9210CA23C4E494001AEC3E /* CYRTextStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210C223C4E493001AEC3E /* CYRTextStorage.h */; };
 		EA9210D923C4E4BA001AEC3E /* HRColorCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210CC23C4E4BA001AEC3E /* HRColorCursor.h */; };
-		EA9210DA23C4E4BA001AEC3E /* HRColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210CD23C4E4BA001AEC3E /* HRColorUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210DA23C4E4BA001AEC3E /* HRColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210CD23C4E4BA001AEC3E /* HRColorUtil.h */; };
 		EA9210DB23C4E4BA001AEC3E /* HRCgUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210CE23C4E4BA001AEC3E /* HRCgUtil.m */; };
 		EA9210DC23C4E4BA001AEC3E /* HRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210CF23C4E4BA001AEC3E /* HRColorPickerViewController.m */; };
 		EA9210DD23C4E4BA001AEC3E /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210D023C4E4BA001AEC3E /* HRColorPickerView.m */; };
 		EA9210DE23C4E4BA001AEC3E /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210D123C4E4BA001AEC3E /* HRBrightnessCursor.m */; };
 		EA9210DF23C4E4BA001AEC3E /* HRColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210D223C4E4BA001AEC3E /* HRColorUtil.m */; };
 		EA9210E023C4E4BA001AEC3E /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210D323C4E4BA001AEC3E /* HRColorCursor.m */; };
-		EA9210E123C4E4BA001AEC3E /* HRColorPickerMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D423C4E4BA001AEC3E /* HRColorPickerMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210E123C4E4BA001AEC3E /* HRColorPickerMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D423C4E4BA001AEC3E /* HRColorPickerMacros.h */; };
 		EA9210E223C4E4BA001AEC3E /* HRCgUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D523C4E4BA001AEC3E /* HRCgUtil.h */; };
 		EA9210E323C4E4BA001AEC3E /* HRBrightnessCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D623C4E4BA001AEC3E /* HRBrightnessCursor.h */; };
-		EA9210E423C4E4BA001AEC3E /* HRColorPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D723C4E4BA001AEC3E /* HRColorPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA9210E523C4E4BA001AEC3E /* HRColorPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D823C4E4BA001AEC3E /* HRColorPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210E423C4E4BA001AEC3E /* HRColorPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D723C4E4BA001AEC3E /* HRColorPickerView.h */; };
+		EA9210E523C4E4BA001AEC3E /* HRColorPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210D823C4E4BA001AEC3E /* HRColorPickerViewController.h */; };
 		EA9210E723C4EDE2001AEC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9210E623C4EDE2001AEC3E /* Images.xcassets */; };
-		EA9210EE23C4EE3A001AEC3E /* ZSSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210E823C4EE3A001AEC3E /* ZSSTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210EE23C4EE3A001AEC3E /* ZSSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210E823C4EE3A001AEC3E /* ZSSTextView.h */; };
 		EA9210EF23C4EE3A001AEC3E /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210E923C4EE3A001AEC3E /* ZSSTextView.m */; };
-		EA9210F023C4EE3A001AEC3E /* ZSSBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210EA23C4EE3A001AEC3E /* ZSSBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210F023C4EE3A001AEC3E /* ZSSBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210EA23C4EE3A001AEC3E /* ZSSBarButtonItem.h */; };
 		EA9210F123C4EE3A001AEC3E /* ZSSFontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210EB23C4EE3A001AEC3E /* ZSSFontsViewController.m */; };
 		EA9210F223C4EE3A001AEC3E /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9210EC23C4EE3A001AEC3E /* ZSSBarButtonItem.m */; };
-		EA9210F323C4EE3A001AEC3E /* ZSSFontsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210ED23C4EE3A001AEC3E /* ZSSFontsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9210F323C4EE3A001AEC3E /* ZSSFontsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA9210ED23C4EE3A001AEC3E /* ZSSFontsViewController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				EA92108223C4E199001AEC3E /* RichTextEditor.h */,
-				EA22F91F23C50F40003CA0D3 /* Editor Resources */,
 				EA22F92423C50F40003CA0D3 /* ZSSRichTextEditorVC.h */,
 				EA22F92523C50F40003CA0D3 /* ZSSRichTextEditorVC.m */,
 				EA9210EA23C4EE3A001AEC3E /* ZSSBarButtonItem.h */,
@@ -122,10 +121,11 @@
 				EA9210EB23C4EE3A001AEC3E /* ZSSFontsViewController.m */,
 				EA9210E823C4EE3A001AEC3E /* ZSSTextView.h */,
 				EA9210E923C4EE3A001AEC3E /* ZSSTextView.m */,
+				EA22F91F23C50F40003CA0D3 /* Editor Resources */,
+				EA92108E23C4E285001AEC3E /* Third Party */,
 				EA9210E623C4EDE2001AEC3E /* Images.xcassets */,
 				EA22F92C23C511F0003CA0D3 /* colors.xcassets */,
 				EA92108323C4E199001AEC3E /* Info.plist */,
-				EA92108E23C4E285001AEC3E /* Third Party */,
 				EA92108023C4E198001AEC3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -191,16 +191,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA92108423C4E199001AEC3E /* RichTextEditor.h in Headers */,
-				EA9210E523C4E4BA001AEC3E /* HRColorPickerViewController.h in Headers */,
-				EA9210E123C4E4BA001AEC3E /* HRColorPickerMacros.h in Headers */,
-				EA9210C423C4E494001AEC3E /* CYRToken.h in Headers */,
-				EA9210EE23C4EE3A001AEC3E /* ZSSTextView.h in Headers */,
-				EA9210F323C4EE3A001AEC3E /* ZSSFontsViewController.h in Headers */,
-				EA9210F023C4EE3A001AEC3E /* ZSSBarButtonItem.h in Headers */,
-				EA9210E423C4E4BA001AEC3E /* HRColorPickerView.h in Headers */,
 				EA22F92A23C50F40003CA0D3 /* ZSSRichTextEditorVC.h in Headers */,
-				EA9210DA23C4E4BA001AEC3E /* HRColorUtil.h in Headers */,
+				EA9210EE23C4EE3A001AEC3E /* ZSSTextView.h in Headers */,
+				EA9210E423C4E4BA001AEC3E /* HRColorPickerView.h in Headers */,
+				EA9210E523C4E4BA001AEC3E /* HRColorPickerViewController.h in Headers */,
+				EA9210C423C4E494001AEC3E /* CYRToken.h in Headers */,
+				EA9210E123C4E4BA001AEC3E /* HRColorPickerMacros.h in Headers */,
+				EA9210F323C4EE3A001AEC3E /* ZSSFontsViewController.h in Headers */,
 				EA9210C323C4E494001AEC3E /* CYRTextView.h in Headers */,
+				EA9210F023C4EE3A001AEC3E /* ZSSBarButtonItem.h in Headers */,
+				EA9210DA23C4E4BA001AEC3E /* HRColorUtil.h in Headers */,
 				EA9210CA23C4E494001AEC3E /* CYRTextStorage.h in Headers */,
 				EA9210C823C4E494001AEC3E /* CYRLayoutManager.h in Headers */,
 				EA9210D923C4E4BA001AEC3E /* HRColorCursor.h in Headers */,

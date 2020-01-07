@@ -14,7 +14,6 @@
 		4581EB80184845790048CAB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB7F184845790048CAB0 /* Foundation.framework */; };
 		4581EB82184845790048CAB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB81184845790048CAB0 /* CoreGraphics.framework */; };
 		4581EB84184845790048CAB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581EB83184845790048CAB0 /* UIKit.framework */; };
-		4581EB8A1848457A0048CAB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4581EB881848457A0048CAB0 /* InfoPlist.strings */; };
 		4581EB8C1848457A0048CAB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4581EB8B1848457A0048CAB0 /* main.m */; };
 		4581EB901848457A0048CAB0 /* ZSSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4581EB8F1848457A0048CAB0 /* ZSSAppDelegate.m */; };
 		4581EBB81848F8190048CAB0 /* ZSSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4581EBB71848F8190048CAB0 /* ZSSDemoViewController.m */; };
@@ -54,7 +53,6 @@
 		4581EB81184845790048CAB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4581EB83184845790048CAB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4581EB871848457A0048CAB0 /* ZSSRichTextEditor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZSSRichTextEditor-Info.plist"; sourceTree = "<group>"; };
-		4581EB891848457A0048CAB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4581EB8B1848457A0048CAB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZSSRichTextEditor-Prefix.pch"; sourceTree = "<group>"; };
 		4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZSSAppDelegate.h; path = Classes/ZSSAppDelegate.h; sourceTree = "<group>"; };
@@ -103,12 +101,14 @@
 				2343B228199D237100349048 /* ZSSPlaceholderViewController.m */,
 			);
 			name = Demo;
+			path = ZSSRichTextEditor;
 			sourceTree = "<group>";
 		};
 		4581EB73184845780048CAB0 = {
 			isa = PBXGroup;
 			children = (
-				4581EB85184845790048CAB0 /* View Controllers */,
+				2343B1D7199B2C3C00349048 /* Demo */,
+				4581EB861848457A0048CAB0 /* Supporting Files */,
 				4581EB7E184845790048CAB0 /* Frameworks */,
 				4581EB7D184845790048CAB0 /* Products */,
 			);
@@ -135,29 +135,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4581EB85184845790048CAB0 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2343B1D7199B2C3C00349048 /* Demo */,
-				4581EB861848457A0048CAB0 /* Supporting Files */,
-			);
-			name = "View Controllers";
-			path = ZSSRichTextEditor;
-			sourceTree = "<group>";
-		};
 		4581EB861848457A0048CAB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */,
 				4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */,
 				4581EB8F1848457A0048CAB0 /* ZSSAppDelegate.m */,
 				4581EB871848457A0048CAB0 /* ZSSRichTextEditor-Info.plist */,
-				4581EB881848457A0048CAB0 /* InfoPlist.strings */,
+				946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */,
 				4581EB8B1848457A0048CAB0 /* main.m */,
 				4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */,
 				EA9210F423C4EFA1001AEC3E /* Images.xcassets */,
 			);
 			name = "Supporting Files";
+			path = ZSSRichTextEditor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +213,6 @@
 			files = (
 				EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */,
 				946ADB9B2285CA3B00DB27F2 /* LaunchScreen.storyboard in Resources */,
-				4581EB8A1848457A0048CAB0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,17 +235,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4581EB881848457A0048CAB0 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4581EB891848457A0048CAB0 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		23013BC4198C30A600C55598 /* Adhoc */ = {

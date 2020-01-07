@@ -5,9 +5,9 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
-      location = "group:RichTextEditor.xcodeproj">
+      location = "container:ZSSRichTextEditor.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:ZSSRichTextEditor.xcodeproj">
+      location = "group:RichTextEditor.xcodeproj">
    </FileRef>
 </Workspace>
