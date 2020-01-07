@@ -16,7 +16,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     self.receiveEditorDidChangeEvents = YES;
 
     self.title = @"Large";

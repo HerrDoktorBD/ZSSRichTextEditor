@@ -57,10 +57,10 @@ static const char* const hackishFixClassName = "WKWebBrowserViewMinusAccessoryVi
 static Class hackishFixClass = Nil;
 
 - (UIView*) hackishlyFoundBrowserView {
-    UIScrollView *scrollView = self.scrollView;
-    
+
     UIView *browserView = nil;
-    for (UIView *subview in scrollView.subviews) {
+    UIScrollView* scrollView = self.scrollView;
+    for (UIView* subview in scrollView.subviews) {
 
         if ([NSStringFromClass([subview class]) hasPrefix:@"WKWebBrowserView"]) {
 
@@ -91,7 +91,7 @@ static Class hackishFixClass = Nil;
 
 - (BOOL) hidesInputAccessoryView {
 
-    UIView *browserView = [self hackishlyFoundBrowserView];
+    UIView* browserView = [self hackishlyFoundBrowserView];
     return [browserView class] == hackishFixClass;
 }
 
@@ -118,9 +118,11 @@ static Class hackishFixClass = Nil;
 @interface ZSSRichTextEditorVC() <WKUIDelegate,
                                   WKNavigationDelegate,
                                   WKScriptMessageHandler,
+
                                   UITextViewDelegate,
                                   UINavigationControllerDelegate,
                                   UIImagePickerControllerDelegate,
+                                  
                                   HRColorPickerViewControllerDelegate,
                                   ZSSFontsViewControllerDelegate>
     /*
@@ -239,39 +241,12 @@ static CGFloat kDefaultScale = 0.5;
 - (void) viewDidLoad {
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor systemBackgroundColor];
+
     self.editorLoaded = NO;
     self.receiveEditorDidChangeEvents = NO;
     self.shouldShowKeyboard = YES;
     self.formatHTML = YES;
-
-    // on viewDidLoad the safeFrame is not correct, adjust the bottom inset manually
-    CGRect safeFrame = self.view.safeAreaLayoutGuide.layoutFrame;
-    if (@available(iOS 11.0, *)) {
-        UIWindow* window = UIApplication.sharedApplication.windows.firstObject;
-        //CGFloat topPadding = window.safeAreaInsets.top;
-        //NSLog(@"topPadding: %f", topPadding);
-        CGFloat bottomPadding = window.safeAreaInsets.bottom;
-        //NSLog(@"bottomPadding: %f", bottomPadding);
-        safeFrame.size.height -= bottomPadding;
-    }
-    self.safeFrame = safeFrame;
-    //NSLog(@"safeFrame: %f %f %f %f", safeFrame.origin.x, safeFrame.origin.y, safeFrame.size.width, safeFrame.size.height);
-
-    [self createSourceView];
-    [self createEditorView];
-    [self createToolbarView];
-
-    [self loadResources];
-
-    // Image Picker used to allow the user insert images from the device (base64 encoded)
-    [self setUpImagePicker];
-}
-
-- (void) viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-
-    self.view.backgroundColor = [UIColor systemBackgroundColor];
-    //self.view.backgroundColor = [UIColor cyanColor];
 }
 
 - (void) viewWillAppear: (BOOL) animated {
@@ -284,6 +259,22 @@ static CGFloat kDefaultScale = 0.5;
                                                object: nil];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+
+    self.safeFrame = self.view.safeAreaLayoutGuide.layoutFrame;
+    //NSLog(@"safeFrame: %f %f %f %f", safeFrame.origin.x, safeFrame.origin.y, safeFrame.size.width, safeFrame.size.height);
+
+    [self createEditorView];
+    [self createSourceView];
+    [self createToolbarView];
+
+    [self loadResources];
+
+    // Image Picker used to allow the user insert images from the device (base64 encoded)
+    [self setUpImagePicker];
+}
+
 - (void) viewWillDisappear: (BOOL) animated {
     [super viewWillDisappear: animated];
 
@@ -293,6 +284,7 @@ static CGFloat kDefaultScale = 0.5;
                                                   object: nil];
 }
 
+#if DEBUG
 + (BOOL) isOrientationWide {
 
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
@@ -301,6 +293,7 @@ static CGFloat kDefaultScale = 0.5;
                            || orientation == UIDeviceOrientationLandscapeRight);
     return isWide;
 }
+#endif
 
 - (void) setSafeFrame {
 
@@ -309,16 +302,6 @@ static CGFloat kDefaultScale = 0.5;
 
     self.editorView.frame = self.safeFrame;
     self.sourceView.frame = self.safeFrame;
-
-#if DEBUG
-    BOOL isLandscape = [ZSSRichTextEditorVC isOrientationWide];
-    if (isLandscape) {
-        NSLog(@"landscape");
-    }
-    else {
-        NSLog(@"portrait");
-    }
-#endif
 }
 
 - (void) viewWillTransitionToSize: (CGSize) size
@@ -332,43 +315,25 @@ static CGFloat kDefaultScale = 0.5;
 
         // Place code here to perform animations during the rotation.
         // You can pass nil or leave this block empty if not necessary.
-
-        [self setSafeFrame];
+        // change any properties on your views
 
     } completion: ^(id<UIViewControllerTransitionCoordinatorContext> context) {
 
         // Code here will execute after the rotation has finished.
         // Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
+
+        [self setSafeFrame];
+
+#if DEBUG
+        BOOL isLandscape = [ZSSRichTextEditorVC isOrientationWide];
+        if (isLandscape) {
+            NSLog(@"landscape");
+        }
+        else {
+            NSLog(@"portrait");
+        }
+#endif
     }];
-}
-
-#pragma mark - Set Up View Section
-
-- (void) createSourceView {
-
-    self.sourceView = [[ZSSTextView alloc] initWithFrame: _safeFrame];
-
-    self.sourceView.hidden = YES;
-    self.sourceView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.sourceView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.sourceView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.sourceView.autoresizesSubviews = YES;
-    self.sourceView.adjustsFontForContentSizeCategory = YES;
-    self.sourceView.delegate = self;
-
-    //self.sourceView.font = [UIFont fontWithName:@"Courier" size:13.0];
-    self.sourceView.font = [UIFont preferredFontForTextStyle: UIFontTextStyleSubheadline];
-
-    //self.sourceView.textColor = [UIColor redColor]; // doesn't work
-    self.sourceView.textColor = [UIColor labelColor];
-
-    // UITextView dark mode is not supported by Apple as of 2019-12-31
-    self.sourceView.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
-    self.sourceView.opaque = false;
-    //self.sourceView.backgroundColor = [UIColor clearColor];
-    self.sourceView.backgroundColor = [UIColor whiteColor];
-
-    [self.view addSubview: self.sourceView];
 }
 
 - (void) createEditorView {
@@ -414,33 +379,31 @@ static CGFloat kDefaultScale = 0.5;
     [self.view addSubview: self.editorView];
 }
 
-#pragma mark - Toolbar Section
+- (void) createSourceView {
 
-- (void) createToolbarView {
+    self.sourceView = [[ZSSTextView alloc] initWithFrame: _safeFrame];
 
-    [self createToolbarScrollView];
+    self.sourceView.hidden = YES;
+    self.sourceView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.sourceView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.sourceView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.sourceView.autoresizesSubviews = YES;
+    self.sourceView.adjustsFontForContentSizeCategory = YES;
+    self.sourceView.delegate = self;
 
-    CGFloat x = _safeFrame.origin.x;
-    CGFloat y = _safeFrame.size.height - 44;
-    CGFloat w = _safeFrame.size.width - x;
+    //self.sourceView.font = [UIFont fontWithName:@"Courier" size:13.0];
+    self.sourceView.font = [UIFont preferredFontForTextStyle: UIFontTextStyleSubheadline];
 
-    // toolbarView
-    self.toolbarView = [[UIView alloc] initWithFrame: CGRectMake(x,
-                                                                 y,
-                                                                 w,
-                                                                 44)];
-    self.toolbarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //self.sourceView.textColor = [UIColor redColor]; // doesn't work
+    self.sourceView.textColor = [UIColor labelColor];
 
-    [self.toolbarView addSubview: self.toolbarScrollView];
+    // UITextView dark mode is not supported by Apple as of 2019-12-31
+    self.sourceView.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    self.sourceView.opaque = false;
+    //self.sourceView.backgroundColor = [UIColor clearColor];
+    self.sourceView.backgroundColor = [UIColor whiteColor];
 
-    if (IS_IPAD)
-        return;
-
-    [self createKeyboardView];
-
-    [self updateHighlightForBarButtonItems];
-
-    [self.view addSubview: self.toolbarView];
+    [self.view addSubview: self.sourceView];
 }
 
 - (void) createToolbarScrollView {
@@ -494,7 +457,7 @@ static CGFloat kDefaultScale = 0.5;
                                                     44);
 }
 
-- (void) createKeyboardView {
+- (void) createViewSourceKeyboardView {
 
     CGFloat frameWidth = _safeFrame.size.width;
 
@@ -543,6 +506,34 @@ static CGFloat kDefaultScale = 0.5;
     [toolbarCropper addSubview: line2];
 
     [self.toolbarView addSubview: toolbarCropper];
+}
+
+- (void) createToolbarView {
+
+    [self createToolbarScrollView];
+
+    CGFloat x = _safeFrame.origin.x;
+    CGFloat y = _safeFrame.size.height - 44;
+    CGFloat w = _safeFrame.size.width - x;
+
+    // toolbarView
+    self.toolbarView = [[UIView alloc] initWithFrame: CGRectMake(x,
+                                                                 y,
+                                                                 w,
+                                                                 44)];
+    self.toolbarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
+    [self.toolbarView addSubview: self.toolbarScrollView];
+
+    if (IS_IPAD)
+        return;
+
+    [self createViewSourceKeyboardView];
+
+    [self updateHighlightForBarButtonItems];
+
+    self.toolbarView.alpha = 0.0;
+    [self.view addSubview: self.toolbarView];
 }
 
 - (void) setToolbarItemTintColor: (UIColor*) color {
@@ -1703,10 +1694,8 @@ static CGFloat kDefaultScale = 0.5;
         CGRect newFrame = self.safeFrame;
         NSLog(@"safeFrame: %f %f %f %f", newFrame.origin.x, newFrame.origin.y, newFrame.size.width, newFrame.size.height);
 
-        CGFloat fh = 0;
         CGFloat screeenHeight = self.safeFrame.size.height;
         CGFloat ch = screeenHeight;
-        CGFloat kbHeight = keyboardRect.size.height;
 
         if (keyboardRect.origin.y < screeenHeight) {
 
@@ -1716,7 +1705,6 @@ static CGFloat kDefaultScale = 0.5;
 
             self.toolbarView.alpha = 1.0;
 
-//            CGFloat kbHeight = keyboardRect.size.height;
             CGRect kbRect = [self.toolbarView.superview convertRect: keyboardRect
                                                            fromView: nil];
             CGRect toolbarFrame = self.toolbarView.frame;
@@ -1733,35 +1721,15 @@ static CGFloat kDefaultScale = 0.5;
             newFrame.size.height = toolbarFrame.origin.y;
 
             ch = newFrame.size.height;
-            fh = kbHeight - 8;
 
         } else {
 
             // hide keyboard
             self.toolbarView.alpha = 0.0;
-
-            // hack: when the keyboard dissappears,
-            // the safeFrame does not have the correct bottom,
-            // so we'll use adjust using the keywindow
-            if (@available(iOS 11.0, *)) {
-
-                UIWindow* window = UIApplication.sharedApplication.windows.firstObject; // keywindow
-                if (newFrame.size.height > window.safeAreaLayoutGuide.layoutFrame.size.height) {
-
-                    CGFloat topPadding = window.safeAreaInsets.top;
-                    //NSLog(@"topPadding: %f", topPadding);
-                    CGFloat bottomPadding = window.safeAreaInsets.bottom;
-                    //NSLog(@"bottomPadding: %f", bottomPadding);
-
-                    newFrame.size.height -= (topPadding + bottomPadding);
-                    ch = newFrame.size.height;
-                }
-            }
         }
 
         // Provide editor with keyboard height and editor view height
         [self setContentHeight: ch];
-        [self setFooterHeight: fh];
 
         self.editorView.scrollView.contentInset = UIEdgeInsetsZero;
         self.editorView.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;

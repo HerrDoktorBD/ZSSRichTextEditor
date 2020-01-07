@@ -24,7 +24,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     self.title = @"ZSSRichTextEditor Demo";
 }
 
