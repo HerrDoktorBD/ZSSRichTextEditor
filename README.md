@@ -22,7 +22,7 @@ We wanted to have a really beautiful color picker to make changing colors really
 How It Works
 ---
 
-Just subclass `ZSSRichTextEditor` and use the following:
+Just subclass `ZSSRichTextEditorVC` and use the following:
 
 ```objective-c
 // HTML Content to set in the editor
@@ -100,41 +100,68 @@ NSString *customCSS = @"a {text-decoration:none;} a:hover {color:#FF0000;}";
 Receive Editor Did Change Events
 ---
 
+Add a delegate to your view controller:
+
+```objective-c
+@interface ZSSLargeViewController() <ZSSRichTextEditorDelegate>
+
+@end
+```
+
 Add the following to your viewDidLoad method:
 
 ```objective-c
 self.receiveEditorDidChangeEvents = YES;
 ```
 
-Then you will receive events in the following method:
+Then you will receive events in the didChangeText method:
 
 ```objective-c
-- (void)editorDidChangeWithText:(NSString *)text andHTML:(NSString *)html {
-    
-    NSLog(@"Text Has Changed: %@", text);
-    
-    NSLog(@"HTML Has Changed: %@", html);
-    
+#pragma ZSSRichTextEditorDelegate delegate
+
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+          didChangeText: (nullable NSString*) text
+                   html: (nullable NSString*) html {
+
+    //NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"Text has changed: %@", text);
+    NSLog(@"HTML has changed: %@", html);
+
+    //self.html = html; // save the html for the NewInfoAvailable notification on exit
 }
 ```
 
 Receive Hashtag & Mention Events
 ---
 
+Add a delegate to your view controller:
+
+```objective-c
+@interface ZSSLargeViewController() <ZSSRichTextEditorDelegate>
+
+@end
+```
+
+Add the following to your viewDidLoad method:
+
+```objective-c
+self.receiveEditorDidChangeEvents = YES;
+```
+
 Hashtags:
 ```objective-c
-- (void)hashtagRecognizedWithWord:(NSString *)word {
-    
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+    didRecognizeHashtag: (nullable NSString*) word {
+
     NSLog(@"Hashtag has been recognized: %@", word);
-    
 }
 ```
 Mentions:
 ```objective-c
-- (void)mentionRecognizedWithWord:(NSString *)word {
-    
+- (void) richTextEditor: (ZSSRichTextEditorVC*) vc
+    didRecognizeMention: (nullable NSString*) word {
+
     NSLog(@"Mention has been recognized: %@", word);
-    
 }
 ```
 
