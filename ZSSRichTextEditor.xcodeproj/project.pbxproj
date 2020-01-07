@@ -72,7 +72,6 @@
 		4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZSSRichTextEditor-Prefix.pch"; sourceTree = "<group>"; };
 		4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZSSAppDelegate.h; path = Classes/ZSSAppDelegate.h; sourceTree = "<group>"; };
 		4581EB8F1848457A0048CAB0 /* ZSSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZSSAppDelegate.m; path = Classes/ZSSAppDelegate.m; sourceTree = "<group>"; };
-		4581EB981848457A0048CAB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4581EBAE1848459F0048CAB0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4581EBB61848F8190048CAB0 /* ZSSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSSDemoViewController.h; path = Classes/ZSSDemoViewController.h; sourceTree = "<group>"; };
 		4581EBB71848F8190048CAB0 /* ZSSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSDemoViewController.m; path = Classes/ZSSDemoViewController.m; sourceTree = "<group>"; };
@@ -202,7 +201,6 @@
 				4581EB7F184845790048CAB0 /* Foundation.framework */,
 				4581EB81184845790048CAB0 /* CoreGraphics.framework */,
 				4581EB83184845790048CAB0 /* UIKit.framework */,
-				4581EB981848457A0048CAB0 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
