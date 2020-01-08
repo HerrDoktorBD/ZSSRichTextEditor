@@ -19,7 +19,6 @@
 		4581EBB81848F8190048CAB0 /* ZSSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4581EBB71848F8190048CAB0 /* ZSSDemoViewController.m */; };
 		45F80458189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F80457189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m */; };
 		946ADB9B2285CA3B00DB27F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */; };
-		C3598B1B235A550D00C1A530 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3598B1A235A550D00C1A530 /* WebKit.framework */; };
 		EA6FB4B323C564C0005646EF /* RichTextEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6FB4B223C564C0005646EF /* RichTextEdit.framework */; };
 		EA6FB4B423C564C0005646EF /* RichTextEdit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA6FB4B223C564C0005646EF /* RichTextEdit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9210F423C4EFA1001AEC3E /* Images.xcassets */; };
@@ -79,7 +78,6 @@
 				4581EB82184845790048CAB0 /* CoreGraphics.framework in Frameworks */,
 				EA6FB4B323C564C0005646EF /* RichTextEdit.framework in Frameworks */,
 				4581EB84184845790048CAB0 /* UIKit.framework in Frameworks */,
-				C3598B1B235A550D00C1A530 /* WebKit.framework in Frameworks */,
 				4581EB80184845790048CAB0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
