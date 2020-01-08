@@ -20,9 +20,10 @@
 		45F80458189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F80457189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m */; };
 		946ADB9B2285CA3B00DB27F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */; };
 		C3598B1B235A550D00C1A530 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3598B1A235A550D00C1A530 /* WebKit.framework */; };
-		EA92108B23C4E227001AEC3E /* RichTextEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA92108A23C4E227001AEC3E /* RichTextEditor.framework */; };
-		EA92108C23C4E227001AEC3E /* RichTextEditor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA92108A23C4E227001AEC3E /* RichTextEditor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA6FB4B323C564C0005646EF /* RichTextEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6FB4B223C564C0005646EF /* RichTextEdit.framework */; };
+		EA6FB4B423C564C0005646EF /* RichTextEdit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA6FB4B223C564C0005646EF /* RichTextEdit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9210F423C4EFA1001AEC3E /* Images.xcassets */; };
+		EA97120523C5665B0055A8DD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA97120423C5665B0055A8DD /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EA92108C23C4E227001AEC3E /* RichTextEditor.framework in Embed Frameworks */,
+				EA6FB4B423C564C0005646EF /* RichTextEdit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +53,6 @@
 		4581EB7F184845790048CAB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4581EB81184845790048CAB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4581EB83184845790048CAB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		4581EB871848457A0048CAB0 /* ZSSRichTextEditor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZSSRichTextEditor-Info.plist"; sourceTree = "<group>"; };
 		4581EB8B1848457A0048CAB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZSSRichTextEditor-Prefix.pch"; sourceTree = "<group>"; };
 		4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZSSAppDelegate.h; path = Classes/ZSSAppDelegate.h; sourceTree = "<group>"; };
@@ -64,8 +64,11 @@
 		45F80457189B1E9300A1EDD9 /* ZSSDemoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSSDemoPickerViewController.m; path = Classes/ZSSDemoPickerViewController.m; sourceTree = "<group>"; };
 		946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3598B1A235A550D00C1A530 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		EA6FB4B223C564C0005646EF /* RichTextEdit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RichTextEdit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92108A23C4E227001AEC3E /* RichTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RichTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9210F423C4EFA1001AEC3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EA97120223C566450055A8DD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA97120423C5665B0055A8DD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +77,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4581EB82184845790048CAB0 /* CoreGraphics.framework in Frameworks */,
+				EA6FB4B323C564C0005646EF /* RichTextEdit.framework in Frameworks */,
 				4581EB84184845790048CAB0 /* UIKit.framework in Frameworks */,
-				EA92108B23C4E227001AEC3E /* RichTextEditor.framework in Frameworks */,
 				C3598B1B235A550D00C1A530 /* WebKit.framework in Frameworks */,
 				4581EB80184845790048CAB0 /* Foundation.framework in Frameworks */,
 			);
@@ -107,6 +110,7 @@
 		4581EB73184845780048CAB0 = {
 			isa = PBXGroup;
 			children = (
+				EA97120423C5665B0055A8DD /* Default-568h@2x.png */,
 				2343B1D7199B2C3C00349048 /* Demo */,
 				4581EB861848457A0048CAB0 /* Supporting Files */,
 				4581EB7E184845790048CAB0 /* Frameworks */,
@@ -125,6 +129,7 @@
 		4581EB7E184845790048CAB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA6FB4B223C564C0005646EF /* RichTextEdit.framework */,
 				EA92108A23C4E227001AEC3E /* RichTextEditor.framework */,
 				C3598B1A235A550D00C1A530 /* WebKit.framework */,
 				4581EBAE1848459F0048CAB0 /* CoreText.framework */,
@@ -138,9 +143,9 @@
 		4581EB861848457A0048CAB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA97120223C566450055A8DD /* Info.plist */,
 				4581EB8E1848457A0048CAB0 /* ZSSAppDelegate.h */,
 				4581EB8F1848457A0048CAB0 /* ZSSAppDelegate.m */,
-				4581EB871848457A0048CAB0 /* ZSSRichTextEditor-Info.plist */,
 				946ADB9A2285CA3B00DB27F2 /* LaunchScreen.storyboard */,
 				4581EB8B1848457A0048CAB0 /* main.m */,
 				4581EB8D1848457A0048CAB0 /* ZSSRichTextEditor-Prefix.pch */,
@@ -212,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9210F523C4EFA1001AEC3E /* Images.xcassets in Resources */,
+				EA97120523C5665B0055A8DD /* Default-568h@2x.png in Resources */,
 				946ADB9B2285CA3B00DB27F2 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +302,7 @@
 				DEVELOPMENT_TEAM = 4F8KT722AK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSSRichTextEditor/ZSSRichTextEditor-Prefix.pch";
-				INFOPLIST_FILE = "ZSSRichTextEditor/ZSSRichTextEditor-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ZSSRichTextEditor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zedsaid.${PRODUCT_NAME:rfc1034identifier}";
@@ -423,7 +429,7 @@
 				DEVELOPMENT_TEAM = 4F8KT722AK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSSRichTextEditor/ZSSRichTextEditor-Prefix.pch";
-				INFOPLIST_FILE = "ZSSRichTextEditor/ZSSRichTextEditor-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ZSSRichTextEditor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zedsaid.${PRODUCT_NAME:rfc1034identifier}";
@@ -448,7 +454,7 @@
 				DEVELOPMENT_TEAM = 4F8KT722AK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSSRichTextEditor/ZSSRichTextEditor-Prefix.pch";
-				INFOPLIST_FILE = "ZSSRichTextEditor/ZSSRichTextEditor-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ZSSRichTextEditor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zedsaid.${PRODUCT_NAME:rfc1034identifier}";

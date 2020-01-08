@@ -5,9 +5,12 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:LICENSE.txt">
+   </FileRef>
+   <FileRef
       location = "container:ZSSRichTextEditor.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:RichTextEditor.xcodeproj">
+      location = "group:RichTextEdit.xcodeproj">
    </FileRef>
 </Workspace>

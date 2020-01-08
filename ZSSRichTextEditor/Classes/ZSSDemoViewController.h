@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Zed Said Studio. All rights reserved.
 //
 
-#import <RichTextEditor/ZSSRichTextEditorVC.h>
+#import <RichTextEdit/ZSSRichTextEditorVC.h>
 
 #pragma once
 
