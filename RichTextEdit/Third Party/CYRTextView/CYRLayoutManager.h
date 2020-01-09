@@ -1,5 +1,5 @@
 //
-//  CYRTextStorage.h
+//  CYRLayoutManager.h
 //
 //  Version 0.2.0
 //
@@ -10,6 +10,7 @@
 //  Get the latest version from here:
 //
 //  https://github.com/illyabusigin/CYRTextView
+//  Original implementation taken from: https://github.com/alldritt/TextKit_LineNumbers
 //
 // The MIT License (MIT)
 //
@@ -32,16 +33,18 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-
 #pragma once
 
-@interface CYRTextStorage: NSTextStorage
+@import UIKit;
 
-    @property (nonatomic, strong) NSArray* tokens;
-    @property (nonatomic, strong) UIFont *defaultFont;
-    @property (nonatomic, strong) UIColor *defaultTextColor;
+@interface CYRLayoutManager: NSLayoutManager
 
-    - (void)update;
+    @property (nonatomic, strong) UIFont *lineNumberFont;
+    @property (nonatomic, strong) UIColor *lineNumberColor;
+
+    @property (nonatomic, readonly) CGFloat gutterWidth;
+    @property (nonatomic, assign) NSRange selectedRange;
+
+    - (CGRect)paragraphRectForRange:(NSRange)range;
 
 @end

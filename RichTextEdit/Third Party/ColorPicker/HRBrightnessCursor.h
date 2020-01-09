@@ -25,20 +25,12 @@
  * $FreeBSD$
  */
 
-#import <UIKit/UIKit.h>
-#import "HRColorUtil.h"
-
 #pragma once
 
-@interface HRColorCursor : UIView{
-    HRRGBColor _currentColor;
-}
+@import UIKit;
 
-+ (CGSize) cursorSize;
-+ (float) outlineSize;
-+ (float) shadowSize;
+@interface HRBrightnessCursor : UIView
 
 - (id)initWithPoint:(CGPoint)point;
-- (void)setColorRed:(float)red andGreen:(float)green andBlue:(float)blue;
 
 @end

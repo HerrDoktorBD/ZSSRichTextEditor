@@ -1,15 +1,18 @@
 //
-//  CYRTextAttribute.h
+//  CYRTextView.h
 //
 //  Version 0.2.0
 //
 //  Created by Illya Busigin on 01/05/2014.
 //  Copyright (c) 2014 Cyrillian, Inc.
+//  Copyright (c) 2013 Dominik Hauser
+//  Copyright (c) 2013 Sam Rijs
 //
 //  Distributed under MIT license.
 //  Get the latest version from here:
 //
 //  https://github.com/illyabusigin/CYRTextView
+//  Gestures sourced from: https://github.com/srijs/NLTextView
 //
 // The MIT License (MIT)
 //
@@ -32,16 +35,21 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-
 #pragma once
 
-@interface CYRToken : NSObject
+@import UIKit;
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *expression;
-@property (nonatomic, strong) NSDictionary *attributes;
+#import "CYRToken.h"
 
-+ (instancetype)tokenWithName:(NSString *)name expression:(NSString *)expression attributes:(NSDictionary *)attributes;
+@interface CYRTextView: UITextView
+
+    @property (nonatomic, strong) NSArray *tokens;
+    @property (nonatomic, strong) UIPanGestureRecognizer *singleFingerPanRecognizer;
+    @property (nonatomic, strong) UIPanGestureRecognizer *doubleFingerPanRecognizer;
+
+    @property UIColor *gutterBackgroundColor;
+    @property UIColor *gutterLineColor;
+
+    @property (nonatomic, assign) BOOL lineCursorEnabled;
 
 @end

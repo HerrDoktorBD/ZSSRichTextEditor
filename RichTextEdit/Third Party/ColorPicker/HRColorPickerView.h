@@ -25,14 +25,14 @@
  * $FreeBSD$
  */
 
-#import <UIKit/UIKit.h>
+#pragma once
+
+@import UIKit;
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
 
 #import "HRColorUtil.h"
 #import "HRColorPickerMacros.h"
-
-#pragma once
 
 @class HRColorPickerView;
 

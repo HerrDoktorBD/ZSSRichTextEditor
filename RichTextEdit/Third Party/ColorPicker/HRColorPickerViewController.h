@@ -25,10 +25,11 @@
  * $FreeBSD$
  */
 
-#import <UIKit/UIKit.h>
-#import "HRColorPickerMacros.h"
-
 #pragma once
+
+@import UIKit;
+
+#import "HRColorPickerMacros.h"
 
 @class HRColorPickerView;
 

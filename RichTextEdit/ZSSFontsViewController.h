@@ -6,9 +6,9 @@
 //  Copyright © 2016 Zed Said Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #pragma once
+
+@import UIKit;
 
 typedef NS_ENUM(int16_t, ZSSFontFamily) {
     

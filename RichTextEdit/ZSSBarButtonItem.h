@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Zed Said Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #pragma once
+
+@import UIKit;
 
 typedef NS_ENUM(NSInteger, ZSSBarButtonItemType) {
     

@@ -12,7 +12,17 @@
 
 #import "ZSSRichTextEditorVC.h"
 
-#import <RichTextEditor/RichTextEditor.h>
+#import "ZSSBarButtonItem.h"
+#import "ZSSTextView.h"
+#import "ZSSFontsViewController.h"
+
+#import "CYRTextView.h"
+#import "CYRToken.h"
+
+#import "HRColorPickerMacros.h"
+#import "HRColorPickerView.h"
+#import "HRColorPickerViewController.h"
+#import "HRColorUtil.h"
 
 @import JavaScriptCore;
 
@@ -613,7 +623,7 @@ static CGFloat kDefaultScale = 0.5;
         return;
 
     // Define correct bundle for loading resources
-    NSBundle* bundle = [NSBundle bundleForClass:[ZSSRichTextEditorVC class]];
+    NSBundle* bundle = [NSBundle bundleForClass: [ZSSRichTextEditorVC class]];
 
     // Create a string with the contents of editor.html
     NSString *filePath = [bundle pathForResource:@"editor" ofType:@"html"];

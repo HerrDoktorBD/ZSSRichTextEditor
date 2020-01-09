@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Zed Said Studio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #pragma once
+
+@import UIKit;
 
 @class ZSSRichTextEditorVC;
 @class ZSSBarButtonItem;
@@ -25,12 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
     - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didScrollToPosition: (NSInteger) position;
     - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didRecognizeHashtag: (nullable NSString*) hashtag;
     - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didRecognizeMention: (nullable NSString*) mention;
-    - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didReceiveUnrecognizedActionLabel: (nullable NSString*) label;
+
     - (BOOL) richTextEditor: (ZSSRichTextEditorVC*) editor shouldInteractWithURL: (nullable NSURL*) url;
-    - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didChangeContentHeight: (CGFloat)height;
     - (void) richTextEditorDidFinishLoad: (ZSSRichTextEditorVC*) editor;
-    - (void) richTextEditor: (ZSSRichTextEditorVC*) editor didChangeCaretYPosition: (CGFloat) caretYPosition
-                 lineHeight: (CGFloat) lineHeight;
+
 @end
 
 /**
